@@ -56,17 +56,45 @@ table {
 /*---------------------------*/
 
 body {
-  background-image: url("images/AnnaLuiseLorenz_IkZieIkZie_01.jpg");
+
 
 }
 
-p {
+nav {
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  display: inline;
+  padding: 5px 5px 0px 5px;
+}
+
+nav > * {
+  display: inline;
+  margin-right: 15px;
+}
+
+p, a, span {
   font-family: Arial;
   color: white;
-  font-size:30px;
-  line-height:36px;
+  font-size:25px;
+  line-height:30px;
   text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
+  mix-blend-mode: difference;
 }
+
+a {
+  text-decoration: none;
+}
+
+.cvContent, .contactContent {
+  display: none;
+  padding-left: 5px;
+}
+
+.visible {
+  display: inline;
+}
+
 
 .circle p, .circleleft p{
   line-height: 200px;
@@ -169,7 +197,13 @@ p {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.26);
 }
 
+.circles-row {
+  position: absolute;
+  top:0;
+}
+
 .circle {
+
     width:200px;
     height:200px;
     border-radius:50%;
@@ -195,6 +229,10 @@ p {
     z-index:9999;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
     float:right;
+}
+
+.image-bg {
+  padding-bottom: 50px;
 }
 
 .textThumbnail {
