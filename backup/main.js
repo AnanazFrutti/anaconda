@@ -1,36 +1,12 @@
 var keywords=['reality','idealism','capitalism','bodies','xeno'];
 var cvIsVisible = false;
 var contactIsVisible = false;
-var diameterCircle = 200;
 
 function generateKeywordcircles() {
   for(var i=0;i<keywords.length;i++){
     var $div = $('<div />').appendTo('body');
-    // var randomPosX = Math.floor((Math.random() * window.innerWidth)- diameterCircle);
-    // map to fit browser width
-    // const randomPosXMapped = (randomPosX, in_min, in_max, out_min, out_max) => {
-    //   return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    // }
-    // const randomPosX = Math.random()*10;
-    // randomPosXMapped(randomPosX, 0, 1, 0, 1920);
-
-    // map end
-    // $div.css("left", randomPosXMapped);
-    // console.log(randomPosX);
-    // console.log(randomPosXMapped);
-
-    var randomPosX = Math.floor((Math.random() * window.innerWidth)- diameterCircle);
-
-    const scale = (num, in_min, in_max, out_min, out_max) => {
-      return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    }
-    const num = 2;
-    // const num = Math.floor(Math.random() * 10);
-    console.log("in" + num);
-    console.log("out" + scale(num,0, 10, 0, window.innerWidth));
     $div.attr('class', 'circle'+ i);
   }
-
 }
 
 var calculateThumbnailHeight = (function () {
@@ -71,6 +47,7 @@ $( ".cv" ).on( "click", function() {
   }
   $(".cvContent").toggleClass("visible");
   cvIsVisible = true;
+  $(body).css('background-color', 'white');
 });
 
 $( ".contact" ).on( "click", function() {
@@ -94,4 +71,3 @@ $( ".contact" ).on( "click", function() {
 $(document).ready(calculateThumbnailHeight);
 $(document).ready(generateKeywordcircles);
 $(window).resize(calculateThumbnailHeight);
-$(window).resize(generateKeywordcircles);
