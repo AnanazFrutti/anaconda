@@ -2,35 +2,39 @@ var keywords=['reality','idealism','capitalism','bodies','xeno'];
 var cvIsVisible = false;
 var contactIsVisible = false;
 var diameterCircle = 200;
+var $div;
+var randomPosX;
+var randomPosY;
+var $p;
 
 function generateKeywordcircles() {
   for(var i=0;i<keywords.length;i++){
-    var $div = $('<div />').appendTo('body');
-    // var randomPosX = Math.floor((Math.random() * window.innerWidth)- diameterCircle);
-    // map to fit browser width
-    // const randomPosXMapped = (randomPosX, in_min, in_max, out_min, out_max) => {
-    //   return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    // }
-    // const randomPosX = Math.random()*10;
-    // randomPosXMapped(randomPosX, 0, 1, 0, 1920);
-
-    // map end
-    // $div.css("left", randomPosXMapped);
-    // console.log(randomPosX);
-    // console.log(randomPosXMapped);
-
-    var randomPosX = Math.floor((Math.random() * window.innerWidth)- diameterCircle);
-
-    const scale = (num, in_min, in_max, out_min, out_max) => {
-      return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    }
-    const num = 2;
-    // const num = Math.floor(Math.random() * 10);
-    console.log("in" + num);
-    console.log("out" + scale(num,0, 10, 0, window.innerWidth));
+    $div = $('<div />').appendTo('body');
+    $p = $('<p />').appendTo($div);
+    $p.text( keywords[i] );
     $div.attr('class', 'circle'+ i);
+    //generate css from here! to push text to the middle
+    positionKeywordCircles();
   }
 
+  //setTimeOut(4000ms) produce Object outside transform: translate(20px, 20px);
+}
+
+function positionKeywordCircles() {
+  for(var i=0;i<keywords.length;i++){
+      var grain = 100;
+      const scaleX = (randomPosX, in_min, in_max, out_min, out_max) => {
+        return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+      }
+      const randomPosX = Math.floor(Math.random() * grain);
+      const scaleY = (randomPosY, in_min, in_max, out_min, out_max) => {
+        return (randomPosY - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+      }
+      const randomPosY = Math.floor(Math.random() * grain);
+      // position
+      $(".circle" + i).css("left", scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle)));
+      $(".circle" + i).css("top", scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle)));
+    }
 }
 
 var calculateThumbnailHeight = (function () {
@@ -94,4 +98,4 @@ $( ".contact" ).on( "click", function() {
 $(document).ready(calculateThumbnailHeight);
 $(document).ready(generateKeywordcircles);
 $(window).resize(calculateThumbnailHeight);
-$(window).resize(generateKeywordcircles);
+$(window).resize(positionKeywordCircles);
