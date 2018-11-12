@@ -1,0 +1,115 @@
+$rotationSpeed: 8000ms;
+
+.circleleft {
+  position: absolute;
+  top:10px;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  fill:none;
+  line-height:200px;
+  text-align:center;
+  z-index:9999999;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.26);
+}
+
+.testCircle {
+  position: absolute;
+  top:200px;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  fill:none;
+  line-height:200px;
+  text-align:center;
+  z-index:9999;
+  background-color: red;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.26);
+}
+
+.circles-row {
+  position: absolute;
+  top:0;
+}
+
+.circle, .circle0, .circle1, .circle2, .circle3, .circle4, .circle5  {
+  position: absolute;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    color:#fff;
+    line-height:200px;
+    text-align:center;
+    fill:none;
+    z-index:9999;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
+    float:right;
+}
+
+.circleBig {
+  position: absolute;
+  top:300px;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    color:#fff;
+    line-height:200px;
+    text-align:center;
+    background:white;
+    z-index:9999;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
+    float:right;
+}
+
+
+
+#rotationCircle1 {
+  -webkit-animation: spin0 $rotationSpeed infinite linear;
+  -moz-animation: spin0 $rotationSpeed infinite linear;
+  -ms-animation: spin0 $rotationSpeed infinite linear;
+}
+
+#rotationCircle2 {
+  -webkit-animation: spin80 $rotationSpeed infinite linear;
+  -moz-animation: spin80 $rotationSpeed infinite linear;
+  -ms-animation: spin80 $rotationSpeed infinite linear;
+}
+
+@-moz-keyframes spin0 {
+    from { -moz-transform: rotateY(0deg); }
+    to { -moz-transform: rotateY(360deg); }
+}
+@-webkit-keyframes spin0 {
+    from { -webkit-transform: rotateY(0deg); }
+    to { -webkit-transform: rotateY(360deg); }
+}
+@keyframes spin0 {
+    from {transform:rotateY(0deg);}
+    to {transform:rotateY(360deg);}
+}
+
+@-moz-keyframes spin30 {
+    from { -moz-transform: rotateY(30deg); }
+    to { -moz-transform: rotateY(390deg); }
+}
+@-webkit-keyframes spin30 {
+    from { -webkit-transform: rotateY(30deg); }
+    to { -webkit-transform: rotateY(390deg); }
+}
+@keyframes spin30 {
+    from {transform:rotateY(30deg);}
+    to {transform:rotateY(390deg);}
+}
+
+@-moz-keyframes spin80 {
+    from { -moz-transform: rotateY(80deg); }
+    to { -moz-transform: rotateY(440deg); }
+}
+@-webkit-keyframes spin80 {
+    from { -webkit-transform: rotateY(80deg); }
+    to { -webkit-transform: rotateY(440deg); }
+}
+@keyframes spin80 {
+    from {transform:rotateY(80deg);}
+    to {transform:rotateY(440deg);}
+}

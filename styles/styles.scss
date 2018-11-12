@@ -54,6 +54,14 @@ table {
 }
 
 /*---------------------------*/
+/*---------------------------*/
+/*---------------------------*/
+/*---------------------------*/
+/*---------------------------*/
+
+@import "_keywords";
+
+$shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
 
 nav {
   position:fixed;
@@ -72,8 +80,8 @@ p, a, span {
   font-family: Arial;
   color: white;
   font-size:25px;
-  line-height:30px;
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
+  // line-height:30px;
+  text-shadow: $shadow;
   mix-blend-mode: difference;
 }
 
@@ -165,7 +173,7 @@ a {
 
 .transparentBoxWithShadow{
   fill: none;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
+  box-shadow: $shadow;
   width:300px;
   height:300px;
   border-radius: 300px;
@@ -179,66 +187,7 @@ a {
 	float: left;
 }
 
-.circleleft {
-  position: absolute;
-  top:10px;
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  fill:none;
-  line-height:200px;
-  text-align:center;
-  z-index:9999999;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.26);
-}
 
-.testCircle {
-  position: absolute;
-  top:200px;
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  fill:none;
-  line-height:200px;
-  text-align:center;
-  z-index:9999;
-  background-color: red;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.26);
-}
-
-.circles-row {
-  position: absolute;
-  top:0;
-}
-
-.circle, .circle0, .circle1, .circle2, .circle3, .circle4, .circle5  {
-  position: absolute;
-    width:200px;
-    height:200px;
-    border-radius:50%;
-    color:#fff;
-    line-height:200px;
-    text-align:center;
-    fill:none;
-    z-index:9999;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
-    float:right;
-}
-
-.circleBig {
-  position: absolute;
-  top:300px;
-    width:600px;
-    height:600px;
-    border-radius:50%;
-    color:#fff;
-    line-height:200px;
-    text-align:center;
-    background:white;
-    z-index:9999;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
-    float:right;
-}
 
 .image-bg {
   padding-bottom: 50px;
@@ -270,57 +219,4 @@ a {
   position: absolute;
   top: 220%;
   left:14%;
-}
-
-
-
-#rotationCircle1 {
-  -webkit-animation: spin0 4000ms infinite linear;
-  -moz-animation: spin0 4000ms infinite linear;
-  -ms-animation: spin0 4000ms infinite linear;
-}
-
-#rotationCircle3 {
-  -webkit-animation: spin80 4000ms infinite linear;
-  -moz-animation: spin80 4000ms infinite linear;
-  -ms-animation: spin80 4000ms infinite linear;
-}
-
-@-moz-keyframes spin0 {
-    from { -moz-transform: rotate(0deg); }
-    to { -moz-transform: rotate(360deg); }
-}
-@-webkit-keyframes spin0 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin0 {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
-}
-
-@-moz-keyframes spin30 {
-    from { -moz-transform: rotate(30deg); }
-    to { -moz-transform: rotate(390deg); }
-}
-@-webkit-keyframes spin30 {
-    from { -webkit-transform: rotate(30deg); }
-    to { -webkit-transform: rotate(390deg); }
-}
-@keyframes spin30 {
-    from {transform:rotate(30deg);}
-    to {transform:rotate(390deg);}
-}
-
-@-moz-keyframes spin80 {
-    from { -moz-transform: rotate(80deg); }
-    to { -moz-transform: rotate(440deg); }
-}
-@-webkit-keyframes spin80 {
-    from { -webkit-transform: rotate(80deg); }
-    to { -webkit-transform: rotate(440deg); }
-}
-@keyframes spin80 {
-    from {transform:rotate(80deg);}
-    to {transform:rotate(440deg);}
 }

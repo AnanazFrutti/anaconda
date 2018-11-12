@@ -13,6 +13,12 @@ function generateKeywordcircles() {
     $p = $('<p />').appendTo($div);
     $p.text( keywords[i] );
     $div.attr('class', 'circle'+ i);
+    //chose between 2 IDs randomly and add to div
+    var rotation1 = 1;
+    var rotation2 = 2;
+    var randomIdCircle = Math.random() < 0.5 ? rotation1 : rotation2;
+    console.log(randomIdCircle);
+    $div.attr('id', 'rotationCircle'+ randomIdCircle);
     //generate css from here! to push text to the middle
     positionKeywordCircles();
   }
