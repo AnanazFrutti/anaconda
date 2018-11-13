@@ -124,9 +124,9 @@ table {
   -ms-animation: spin30 8000ms infinite linear; }
 
 #rotationCircle3 {
-  -webkit-animation: spin80 8000ms infinite linear;
-  -moz-animation: spin80 8000ms infinite linear;
-  -ms-animation: spin80 8000ms infinite linear; }
+  -webkit-animation: spin80 800ms infinite linear;
+  -moz-animation: spin80 800ms infinite linear;
+  -ms-animation: spin80 800ms infinite linear; }
 
 @-moz-keyframes spin0 {
   from {

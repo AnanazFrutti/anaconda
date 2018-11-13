@@ -1,4 +1,5 @@
 $rotationSpeed: 8000ms;
+$rotationSpeed2: 800ms;
 @mixin translateYCircles {
 
 }
@@ -81,9 +82,9 @@ $rotationSpeed: 8000ms;
 }
 
 #rotationCircle3 {
-  -webkit-animation: spin80 $rotationSpeed infinite linear;
-  -moz-animation: spin80 $rotationSpeed infinite linear;
-  -ms-animation: spin80 $rotationSpeed infinite linear;
+  -webkit-animation: spin80 $rotationSpeed2 infinite linear;
+  -moz-animation: spin80 $rotationSpeed2 infinite linear;
+  -ms-animation: spin80 $rotationSpeed2 infinite linear;
 }
 
 @-moz-keyframes spin0 {

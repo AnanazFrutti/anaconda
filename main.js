@@ -1,20 +1,25 @@
 var keywords=['reality','idealism','capitalism','bodies','xeno'];
+var keywordsURL=['www.anaconda.cc/reality', 'www.anaconda.cc/idealism', 'www.anaconda.cc/capitalism', 'www.anaconda.cc/body', 'www.anaconda.cc/xeno']
 var cvIsVisible = false;
 var contactIsVisible = false;
 var diameterCircle = 200;
 var $div;
+var $p;
+var $a;
 var randomPosX;
 var randomPosY;
-var $p;
+
 
 function generateKeywordcircles() {
   for(var i=0;i<keywords.length;i++){
     $div = $('<div />').appendTo('body');
     $p = $('<p />').appendTo($div);
-    $p.text( keywords[i] );
+    $a = $('<a />').appendTo($p);
+    $a.attr('href', keywordsURL[i]);
+    $a.text( keywords[i] );
     $p.attr('class', 'textKeywords');
     $div.attr('class', 'circle'+ i);
-    //chose between 2 IDs randomly and add to div
+    //chose between 3 IDs randomly and add to div
     var rotation1 = 1;
     var rotation2 = 2;
     var rotation3 = 3;
@@ -99,7 +104,7 @@ $( ".contact" ).on( "click", function() {
   $(".contactContent").toggleClass("visible");
   contactIsVisible = true;
 });
-
+// click in document body to close cvCOntent and contactContent
 // $(document).click(function(event) {
 //     if(!$(event.target).closest('.cvContent').length) {
 //         if(contactIsVisible == true) {
