@@ -129,29 +129,29 @@ $( document ).ready(function() {
   calculateThumbnailHeight();
   generateKeywordcircles();
   positionKeywordCircles();
+  $( ".circle0" ).animate({ "top": "-=350px" }, 1000 );
 
 });
 $(window).resize(calculateThumbnailHeight);
 $(window).resize(positionKeywordCircles);
 
-// animate the Circles
+// animate the circles with jquery
 
-var updateCircleY = setInterval(animateCirclePosY, 60);
 
-function animateCirclePosY() {
-    // var yPosAdded= yyy[0] - 0.5;
-    yyy[0] -= 0.5;
-    yyy[1] -= 0.8;
-    yyy[2] -= 1.5;
-    yyy[3] -= 0.5;
-    yyy[4] -= 0.5;
-      for(var i=0;i<keywords.length;i++){
-        $(".circle" +i).css("--keywordcircle-top", yyy[i]);
-      }
-}
-function myStopFunction() {
-    clearInterval(updateCircleY);
-}
-// $(document).click(function(event) {
-//     myStopFunction();
-// });
+// // animate the Circles with setInterval
+//
+// var updateCircleY = setInterval(animateCirclePosY, 60);
+//
+// function animateCirclePosY() {
+//     yyy[0] -= 0.5;
+//     yyy[1] -= 0.8;
+//     yyy[2] -= 1.5;
+//     yyy[3] -= 0.5;
+//     yyy[4] -= 0.5;
+//       for(var i=0;i<keywords.length;i++){
+//         $(".circle" +i).css("--keywordcircle-top", yyy[i]);
+//       }
+// }
+// function myStopFunction() {
+//     clearInterval(updateCircleY);
+// }
