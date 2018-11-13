@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
 ------------------ RESET ---------------------
 */
@@ -88,6 +87,7 @@ table {
   position: absolute;
   width: 200px;
   height: 200px;
+  top: var(--keywordcircle-top);
   border-radius: 50%;
   color: #fff;
   line-height: 200px;
@@ -95,29 +95,15 @@ table {
   fill: none;
   z-index: 9999;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
-  float: right;
-  -webkit-animation: transY 20s infinite linear;
-  -moz-animation: transY 20s infinite linear;
-  -ms-animation: transY 20s infinite linear;
-  -o-animation: transY 20s infinite linear;
-  animation: transY 20s infinite linear; }
+  float: right; }
 
-@keyframes transY {
-  from {
-    top: 480px; }
-  to {
-    top: -100px; } }
-@-moz-keyframes transY {
-  from {
-    top: 480px; }
-  to {
-    top: -100px; } }
-@-webkit-keyframes transY {
-  from {
-    top: 480px; }
-  to {
-    top: -100px; } }
-ÔÇï
+.circle0.vertTranslate {
+  -webkit-transition: 3s;
+  -moz-transition: 3s;
+  -ms-transition: 3s;
+  -o-transition: 3s;
+  transition: 3s; }
+
 .circleBig {
   position: absolute;
   top: 300px;
@@ -195,6 +181,9 @@ table {
     transform: rotateY(80deg); }
   to {
     transform: rotateY(440deg); } }
+html {
+  --keywordcircle-top: 0; }
+
 body {
   background-image: url(../images/AnnaLuiseLorenz_Patternist_00.jpg); }
 

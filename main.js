@@ -1,4 +1,4 @@
-var keywords=['reality','idealism','capitalism','bodies','xeno'];
+var keywords=['1','2','3','4','5'];
 var keywordsURL=['www.anaconda.cc/reality', 'www.anaconda.cc/idealism', 'www.anaconda.cc/capitalism', 'www.anaconda.cc/body', 'www.anaconda.cc/xeno']
 var cvIsVisible = false;
 var contactIsVisible = false;
@@ -8,6 +8,8 @@ var $p;
 var $a;
 var randomPosX;
 var randomPosY;
+var yPosAdded;
+var yyy;
 
 
 function generateKeywordcircles() {
@@ -24,37 +26,58 @@ function generateKeywordcircles() {
     var rotation2 = 2;
     var rotation3 = 3;
     var randomIdCircle = Math.random() < 0.5 ? rotation1 : (Math.random() < 0.5 ? rotation2 : rotation3);
-    console.log(randomIdCircle);
+    // console.log(randomIdCircle);
     $div.attr('id', 'rotationCircle'+ randomIdCircle);
-    positionKeywordCircles();
   }
+  positionKeywordCircles();
 
 }
+
+
 
 function rebirthKeywordcircles() {
   console.log("born");
 }
 
 function positionKeywordCircles() {
+  yyy = new Array(keywords.length);
   for(var i=0;i<keywords.length;i++){
       var grain = 100;
       // map randomly created Values to Browserwindowsize
+      const randomPosX = Math.floor(Math.random() * grain);
+      const randomPosY = Math.floor(Math.random() * grain);
       const scaleX = (randomPosX, in_min, in_max, out_min, out_max) => {
         return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
       }
-      const randomPosX = Math.floor(Math.random() * grain);
       const scaleY = (randomPosY, in_min, in_max, out_min, out_max) => {
         return (randomPosY - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
       }
-      const randomPosY = Math.floor(Math.random() * grain);
-      // save in variable which can be used for the animation later in CSS
 
+      // save in variable which can be used for the animation later in CSS
+      var initialPositionX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
+      var initialPositionY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
 
       // position
-      $(".circle" + i).css("left", scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle)));
-      $(".circle" + i).css("top", scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle)));
+      $(".circle" + i).css("left", initialPositionX);
+      $(".circle" + i).css("--keywordcircle-top", initialPositionY);
+      yyy.push(initialPositionY);
+      console.log(yyy);
+      console.log(initialPositionY);
+      console.log(randomPosY);
+      console.log(i);
+
     }
+
 }
+
+// // animate the Circles
+//
+// var updateCircleY = setInterval(animateCirclePosY, 60);
+//
+// function animateCirclePosY() {
+//     document.getElementsByClassName("circle0").innerHTML = d.toLocaleTimeString();
+//     yPosAdded++;
+// }
 
 
 var calculateThumbnailHeight = (function () {

@@ -40,6 +40,7 @@ $rotationSpeed2: 800ms;
   position: absolute;
     width:200px;
     height:200px;
+    top: var(--keywordcircle-top);
     border-radius:50%;
     color:#fff;
     line-height:200px;
@@ -48,25 +49,33 @@ $rotationSpeed2: 800ms;
     z-index:9999;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
     float:right;
-    -webkit-animation:  transY 20s infinite linear;
-    -moz-animation:     transY 20s infinite linear;
-    -ms-animation:      transY 20s infinite linear;
-    -o-animation:       transY 20s infinite linear;
-    animation:          transY 20s infinite linear;
+    // -webkit-animation:  transY 20s infinite linear;
+    // -moz-animation:     transY 20s infinite linear;
+    // -ms-animation:      transY 20s infinite linear;
+    // -o-animation:       transY 20s infinite linear;
+    // animation:          transY 20s infinite linear;
 }
 
-@keyframes transY {
-    from {top: 480px;} // aktuelle Position dynamisch! von randomposY abgeleitet
-    to{top:-100px;} // half of diameterCircle
+.circle0.vertTranslate {
+  -webkit-transition: 3s;
+  -moz-transition: 3s;
+  -ms-transition: 3s;
+  -o-transition: 3s;
+  transition: 3s;
 }
-@-moz-keyframes transY {
-    from {top: 480px;}
-    to{top:-100px;}
-}
-@-webkit-keyframes transY {
-    from {top: 480px;}
-    to{top:-100px;}
-}​
+
+// @keyframes transY {
+//     from {top: 480px;} // aktuelle Position dynamisch! von randomposY abgeleitet
+//     to{top:-100px;} // half of diameterCircle
+// }
+// @-moz-keyframes transY {
+//     from {top: 480px;}
+//     to{top:-100px;}
+// }
+// @-webkit-keyframes transY {
+//     from {top: 480px;}
+//     to{top:-100px;}
+// }​
 
 .circleBig {
   position: absolute;
