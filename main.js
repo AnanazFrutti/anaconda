@@ -29,18 +29,10 @@ function generateKeywordcircles() {
     // console.log(randomIdCircle);
     $div.attr('id', 'rotationCircle'+ randomIdCircle);
   }
-  positionKeywordCircles();
-
-}
-
-
-
-function rebirthKeywordcircles() {
-  console.log("born");
 }
 
 function positionKeywordCircles() {
-  yyy = new Array(keywords.length);
+  yyy = new Array();
   for(var i=0;i<keywords.length;i++){
       var grain = 100;
       // map randomly created Values to Browserwindowsize
@@ -56,15 +48,17 @@ function positionKeywordCircles() {
       // save in variable which can be used for the animation later in CSS
       var initialPositionX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
       var initialPositionY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
+      console.log(initialPositionY);
 
       // position
       $(".circle" + i).css("left", initialPositionX);
       $(".circle" + i).css("--keywordcircle-top", initialPositionY);
+
+      // save position analog to className to retrieve later
       yyy.push(initialPositionY);
+
       console.log(yyy);
-      console.log(initialPositionY);
-      console.log(randomPosY);
-      console.log(i);
+
 
     }
 
@@ -142,6 +136,8 @@ $( ".contact" ).on( "click", function() {
 $( document ).ready(function() {
   calculateThumbnailHeight();
   generateKeywordcircles();
+  positionKeywordCircles();
+
 });
 $(window).resize(calculateThumbnailHeight);
 $(window).resize(positionKeywordCircles);
