@@ -1,4 +1,4 @@
-var keywords=['1','2','3','4','5'];
+var keywords=['reality0','idealism1','capitalism2','body3','xeno4'];
 var keywordsURL=['www.anaconda.cc/reality', 'www.anaconda.cc/idealism', 'www.anaconda.cc/capitalism', 'www.anaconda.cc/body', 'www.anaconda.cc/xeno']
 var cvIsVisible = false;
 var contactIsVisible = false;
@@ -8,8 +8,9 @@ var $p;
 var $a;
 var randomPosX;
 var randomPosY;
-var yPosAdded;
 var yyy;
+var initialPositionX;
+var initialPositionY;
 
 
 function generateKeywordcircles() {
@@ -46,8 +47,8 @@ function positionKeywordCircles() {
       }
 
       // save in variable which can be used for the animation later in CSS
-      var initialPositionX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
-      var initialPositionY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
+      initialPositionX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
+      initialPositionY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
       console.log(initialPositionY);
 
       // position
@@ -58,20 +59,11 @@ function positionKeywordCircles() {
       yyy.push(initialPositionY);
 
       console.log(yyy);
-
-
     }
 
 }
 
-// // animate the Circles
-//
-// var updateCircleY = setInterval(animateCirclePosY, 60);
-//
-// function animateCirclePosY() {
-//     document.getElementsByClassName("circle0").innerHTML = d.toLocaleTimeString();
-//     yPosAdded++;
-// }
+
 
 
 var calculateThumbnailHeight = (function () {
@@ -141,3 +133,25 @@ $( document ).ready(function() {
 });
 $(window).resize(calculateThumbnailHeight);
 $(window).resize(positionKeywordCircles);
+
+// animate the Circles
+
+var updateCircleY = setInterval(animateCirclePosY, 60);
+
+function animateCirclePosY() {
+    // var yPosAdded= yyy[0] - 0.5;
+    yyy[0] -= 0.5;
+    yyy[1] -= 0.8;
+    yyy[2] -= 1.5;
+    yyy[3] -= 0.5;
+    yyy[4] -= 0.5;
+      for(var i=0;i<keywords.length;i++){
+        $(".circle" +i).css("--keywordcircle-top", yyy[i]);
+      }
+}
+function myStopFunction() {
+    clearInterval(updateCircleY);
+}
+// $(document).click(function(event) {
+//     myStopFunction();
+// });
