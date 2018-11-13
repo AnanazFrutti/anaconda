@@ -16,19 +16,21 @@ var initialPositionY;
 function generateKeywordcircles() {
   for(var i=0;i<keywords.length;i++){
     $div = $('<div />').appendTo('body');
-    $p = $('<p />').appendTo($div);
+    $div2 = $('<div />').appendTo($div); //new
+    $div.attr('class', 'circleAnimation');
+    $p = $('<p />').appendTo($div2);
     $a = $('<a />').appendTo($p);
     $a.attr('href', keywordsURL[i]);
     $a.text( keywords[i] );
     $p.attr('class', 'textKeywords');
-    $div.attr('class', 'circle'+ i);
+    $div2.attr('class', 'circle'+ i);
     //chose between 3 IDs randomly and add to div
     var rotation1 = 1;
     var rotation2 = 2;
     var rotation3 = 3;
     var randomIdCircle = Math.random() < 0.5 ? rotation1 : (Math.random() < 0.5 ? rotation2 : rotation3);
     // console.log(randomIdCircle);
-    $div.attr('id', 'rotationCircle'+ randomIdCircle);
+    $div2.attr('id', 'rotationCircle'+ randomIdCircle);
   }
 }
 
@@ -52,8 +54,12 @@ function positionKeywordCircles() {
       console.log(initialPositionY);
 
       // position
+
       $(".circle" + i).css("left", initialPositionX);
       $(".circle" + i).css("--keywordcircle-top", initialPositionY);
+
+      // document.getElementsByClassName(".circle" + i).classList.add('circleAnimation');
+
 
       // save position analog to className to retrieve later
       yyy.push(initialPositionY);
@@ -63,8 +69,16 @@ function positionKeywordCircles() {
 
 }
 
-
-
+function animateKeywordCircles() {
+  // A animate B if any of the animated objects is more than -200, remove from array
+    // $( ".circle1" ).animate({ "top": "100px" });
+  //drag out of Array
+  // for(var i=0;i<keywords.length;i++){
+  //
+  // }
+  // animate
+  // if
+}
 
 var calculateThumbnailHeight = (function () {
        var patternist02Height = $('#patternist02').height();
@@ -129,7 +143,10 @@ $( document ).ready(function() {
   calculateThumbnailHeight();
   generateKeywordcircles();
   positionKeywordCircles();
-  $( ".circle0" ).animate({ "top": "-=350px" }, 1000 );
+  animateKeywordCircles();
+
+  // schießt Kreis nach oben
+  // $( ".circle0" ).animate({ "top": "-200px" }, 1000 );
 
 });
 $(window).resize(calculateThumbnailHeight);
