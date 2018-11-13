@@ -1,4 +1,7 @@
 $rotationSpeed: 8000ms;
+@mixin translateYCircles {
+
+}
 
 .circleleft {
   position: absolute;
@@ -61,7 +64,9 @@ $rotationSpeed: 8000ms;
     float:right;
 }
 
-
+.textKeywords {
+  opacity: 0.2;
+}
 
 #rotationCircle1 {
   -webkit-animation: spin0 $rotationSpeed infinite linear;
@@ -70,6 +75,12 @@ $rotationSpeed: 8000ms;
 }
 
 #rotationCircle2 {
+  -webkit-animation: spin30 $rotationSpeed infinite linear;
+  -moz-animation: spin30 $rotationSpeed infinite linear;
+  -ms-animation: spin30 $rotationSpeed infinite linear;
+}
+
+#rotationCircle3 {
   -webkit-animation: spin80 $rotationSpeed infinite linear;
   -moz-animation: spin80 $rotationSpeed infinite linear;
   -ms-animation: spin80 $rotationSpeed infinite linear;

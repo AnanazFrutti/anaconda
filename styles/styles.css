@@ -110,12 +110,20 @@ table {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
   float: right; }
 
+.textKeywords {
+  opacity: 0.2; }
+
 #rotationCircle1 {
   -webkit-animation: spin0 8000ms infinite linear;
   -moz-animation: spin0 8000ms infinite linear;
   -ms-animation: spin0 8000ms infinite linear; }
 
 #rotationCircle2 {
+  -webkit-animation: spin30 8000ms infinite linear;
+  -moz-animation: spin30 8000ms infinite linear;
+  -ms-animation: spin30 8000ms infinite linear; }
+
+#rotationCircle3 {
   -webkit-animation: spin80 8000ms infinite linear;
   -moz-animation: spin80 8000ms infinite linear;
   -ms-animation: spin80 8000ms infinite linear; }
@@ -165,6 +173,9 @@ table {
     transform: rotateY(80deg); }
   to {
     transform: rotateY(440deg); } }
+body {
+  background-image: url(../images/AnnaLuiseLorenz_Patternist_00.jpg); }
+
 nav {
   position: fixed;
   top: 0px;
@@ -269,11 +280,11 @@ a {
   /* text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.9); */ }
 
 .transparentBoxWithShadow {
-  fill: none;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
   width: 300px;
   height: 300px;
   border-radius: 300px;
+  fill: none;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
   z-index: 99;
   position: absolute;
   top: 1200px;

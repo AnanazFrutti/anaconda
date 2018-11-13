@@ -12,23 +12,30 @@ function generateKeywordcircles() {
     $div = $('<div />').appendTo('body');
     $p = $('<p />').appendTo($div);
     $p.text( keywords[i] );
+    $p.attr('class', 'textKeywords');
     $div.attr('class', 'circle'+ i);
     //chose between 2 IDs randomly and add to div
     var rotation1 = 1;
     var rotation2 = 2;
-    var randomIdCircle = Math.random() < 0.5 ? rotation1 : rotation2;
+    var rotation3 = 3;
+    var randomIdCircle = Math.random() < 0.5 ? rotation1 : (Math.random() < 0.5 ? rotation2 : rotation3);
     console.log(randomIdCircle);
     $div.attr('id', 'rotationCircle'+ randomIdCircle);
-    //generate css from here! to push text to the middle
     positionKeywordCircles();
   }
-
+  // setTimeOut(rebirthKeywordcircles, 8000);
+  // move Keywordcircles
   //setTimeOut(4000ms) produce Object outside transform: translate(20px, 20px);
 }
+
+// rebirthKeywordcircles() {
+//   console.log("born");
+// }
 
 function positionKeywordCircles() {
   for(var i=0;i<keywords.length;i++){
       var grain = 100;
+      // map randomly created Values to Browserwindowsize
       const scaleX = (randomPosX, in_min, in_max, out_min, out_max) => {
         return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
       }
@@ -42,6 +49,7 @@ function positionKeywordCircles() {
       $(".circle" + i).css("top", scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle)));
     }
 }
+
 
 var calculateThumbnailHeight = (function () {
        var patternist02Height = $('#patternist02').height();
