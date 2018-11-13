@@ -31,34 +31,44 @@ $rotationSpeed2: 800ms;
 //   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.26);
 // }
 
+// @keyframes example {
+//   from {
+//     transform: translate(0, 0);
+//   }
+//   to {
+//     transform: translate(20px, 50px);
+// }
+
+// @-webkit-keyframes example {
+//   0% {
+//       transform: translate(0, 0);
+//     }
+//     100% {
+//       transform: translate(20px, 50px);
+// }
+
 .circles-row {
   position: absolute;
   top:0;
 }
 
-.circle, .circle0, .circle1, .circle2, .circle3, .circle5  {
+.circle, .circle0, .circle1, .circle2, .circle3, .circle4  {
   position: absolute;
-    width:200px;
-    height:200px;
-    top: var(--keywordcircle-top);
-    border-radius:50%;
-    line-height:200px;
-    text-align:center;
-    fill:red;
-    z-index:9999;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
-    // float:right;
-    // -webkit-animation:  transY 20s infinite linear;
-    // -moz-animation:     transY 20s infinite linear;
-    // -ms-animation:      transY 20s infinite linear;
-    // -o-animation:       transY 20s infinite linear;
-    // animation:          transY 20s infinite linear;
+  width:200px;
+  height:200px;
+  top: var(--keywordcircle-top);
+  border-radius:50%;
+  line-height:200px;
+  text-align:center;
+  fill:red;
+  z-index:9999;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
+
 }
 
-.circle4 {
-  @extend .circle;
-  background-image:url(../images/AnnaLuiseLorenz_IkZie_00.jpg);
-  background-size: cover;
+.circleAnimation {
+  // -webkit-animation: circleTranslateY 3s infinite linear;
+  //         animation: circleTranslateY 3s infinite linear;
 }
 
 .circle0.vertTranslate {
@@ -112,6 +122,7 @@ $rotationSpeed2: 800ms;
   -webkit-animation: spin30 $rotationSpeed infinite linear;
   -moz-animation: spin30 $rotationSpeed infinite linear;
   -ms-animation: spin30 $rotationSpeed infinite linear;
+
 }
 
 #rotationCircle3 {
@@ -157,4 +168,26 @@ $rotationSpeed2: 800ms;
 @keyframes spin80 {
     from {transform:rotateY(80deg);}
     to {transform:rotateY(440deg);}
+}
+
+@-webkit-keyframes circleTranslateY {
+  0% {
+    -webkit-transform: translateY(var(--keywordcircle-top));
+            transform: translateY(var(--keywordcircle-top));
+  }
+  100% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+}
+
+@keyframes circleTranslateY {
+  0% {
+    -webkit-transform: translateY(var(--keywordcircle-top));
+            transform: translateY(var(--keywordcircle-top));
+  }
+  100% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
 }

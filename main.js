@@ -47,27 +47,21 @@ function positionKeywordCircles() {
       const scaleY = (randomPosY, in_min, in_max, out_min, out_max) => {
         return (randomPosY - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
       }
-
       // save in variable which can be used for the animation later in CSS
       initialPositionX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
       initialPositionY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
       console.log(initialPositionY);
-
       // position
-
       $(".circle" + i).css("left", initialPositionX);
       $(".circle" + i).css("--keywordcircle-top", initialPositionY);
-
-      // document.getElementsByClassName(".circle" + i).classList.add('circleAnimation');
-
-
       // save position analog to className to retrieve later
       yyy.push(initialPositionY);
-
-      console.log(yyy);
     }
-
 }
+
+
+
+
 
 function animateKeywordCircles() {
   // A animate B if any of the animated objects is more than -200, remove from array
@@ -145,8 +139,41 @@ $( document ).ready(function() {
   positionKeywordCircles();
   animateKeywordCircles();
 
-  // schießt Kreis nach oben
-  // $( ".circle0" ).animate({ "top": "-200px" }, 1000 );
+  // animation auf Y-Achse Circles
+  var requestAnimFrame = (function(){
+    return  window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame    ||
+      window.oRequestAnimationFrame      ||
+      window.msRequestAnimationFrame     ||
+      function( callback, element ){
+        window.setTimeout(callback, 1000 / 60);
+      };
+  })();
+
+  var startTime = +(new Date());
+  // für mehrere
+  // var horizonArr = new Array();
+  // for (i=0;i<keywords.length;i++) {
+  //   var newElement = document.getElementsByClassName('circle'+i);
+  //   horizonArr.push(newElement);
+  //   console.dir(horizonArr);
+  // }
+  // end für mehrere
+
+  var horizon = document.getElementsByClassName('circle0')[0];
+  var currentPos = yyy[0];
+
+  while (currentPos >= 10) {
+    (function update(){
+        var dif = (new Date()).getTime() - startTime;
+        dif *= 0.01;
+        horizon.style.top = (100 - dif)+'px';
+
+        requestAnimFrame( update, horizon );
+    })();
+    currentPos = horizon.style.top;
+  }
 
 });
 $(window).resize(calculateThumbnailHeight);
