@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
 ------------------ RESET ---------------------
 */
@@ -94,8 +95,29 @@ table {
   fill: none;
   z-index: 9999;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
-  float: right; }
+  float: right;
+  -webkit-animation: transY 20s infinite linear;
+  -moz-animation: transY 20s infinite linear;
+  -ms-animation: transY 20s infinite linear;
+  -o-animation: transY 20s infinite linear;
+  animation: transY 20s infinite linear; }
 
+@keyframes transY {
+  from {
+    top: 480px; }
+  to {
+    top: -100px; } }
+@-moz-keyframes transY {
+  from {
+    top: 480px; }
+  to {
+    top: -100px; } }
+@-webkit-keyframes transY {
+  from {
+    top: 480px; }
+  to {
+    top: -100px; } }
+ÔÇï
 .circleBig {
   position: absolute;
   top: 300px;

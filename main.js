@@ -28,14 +28,12 @@ function generateKeywordcircles() {
     $div.attr('id', 'rotationCircle'+ randomIdCircle);
     positionKeywordCircles();
   }
-  // setTimeOut(rebirthKeywordcircles, 8000);
-  // move Keywordcircles
-  //setTimeOut(4000ms) produce Object outside transform: translate(20px, 20px);
+
 }
 
-// rebirthKeywordcircles() {
-//   console.log("born");
-// }
+function rebirthKeywordcircles() {
+  console.log("born");
+}
 
 function positionKeywordCircles() {
   for(var i=0;i<keywords.length;i++){
@@ -49,6 +47,9 @@ function positionKeywordCircles() {
         return (randomPosY - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
       }
       const randomPosY = Math.floor(Math.random() * grain);
+      // save in variable which can be used for the animation later in CSS
+
+
       // position
       $(".circle" + i).css("left", scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle)));
       $(".circle" + i).css("top", scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle)));
@@ -114,7 +115,10 @@ $( ".contact" ).on( "click", function() {
 //     }
 // });
 
-$(document).ready(calculateThumbnailHeight);
-$(document).ready(generateKeywordcircles);
+
+$( document ).ready(function() {
+  calculateThumbnailHeight();
+  generateKeywordcircles();
+});
 $(window).resize(calculateThumbnailHeight);
 $(window).resize(positionKeywordCircles);
