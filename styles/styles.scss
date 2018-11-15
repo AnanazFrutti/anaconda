@@ -59,6 +59,16 @@ table {
 /*---------------------------*/
 /*---------------------------*/
 
+@font-face {
+    font-family: fonttt;
+    src: url(../GT-America-Trial-Expanded-Light.otf); //Fort
+}
+
+// @import url('https://fonts.googleapis.com/css?family=Gothic+A1:300');
+
+
+
+
 @import "_keywords";
 @mixin sizeKeywordCircles {
   width:300px;
@@ -81,7 +91,7 @@ nav {
   top: 0px;
   left: 0px;
   display: inline;
-  padding: 5px 5px 0px 5px;
+  padding: 3px 5px 0px 5px;
 }
 
 nav > * {
@@ -90,12 +100,13 @@ nav > * {
 }
 
 p, a, span {
-  font-family: Arial;
+  font-family:fonttt, sans-serif;
   color: white;
   font-size:25px;
   // line-height:30px;
   text-shadow: $shadow;
   mix-blend-mode: difference;
+  letter-spacing: -0.2px;
 }
 
 a {
