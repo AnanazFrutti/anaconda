@@ -152,30 +152,24 @@ $( document ).ready(function() {
   })();
 
   var startTime = +(new Date());
-  // für mehrere
-  // var horizonArr = new Array();
-  // for (i=0;i<keywords.length;i++) {
-  //   var newElement = document.getElementsByClassName('circle'+i);
-  //   horizonArr.push(newElement);
-  //   console.dir(horizonArr);
-  // }
-  // end für mehrere
+  var circle = document.getElementsByClassName('circle0')[0];
+  var updatePos;
+  var dif2 = yyy[0];
 
-  var horizon = document.getElementsByClassName('circle0')[0];
-  var currentPos = yyy[0];
-
-  while (currentPos >= 10) {
+  while (dif2 >= 50) {
     (function update(){
-        var dif = (new Date()).getTime() - startTime;
-        dif *= 0.01;
-        horizon.style.top = (100 - dif)+'px';
-
-        requestAnimFrame( update, horizon );
+        var dif = (new Date()).getTime() - startTime; // zählt quasi als counter hoch
+        dif *= 0.01; // dif wird immer größer, muss also nur von yyy[0] abgezogen werden
+        dif2 -= dif;
+        circle.style.top = dif2 +'px';
+        console.log(circle.style.top);
+        requestAnimFrame( update, circle, dif2 );
     })();
-    currentPos = horizon.style.top;
-  }
+    // updatePos = circle.style.top;
+   }
 
 });
+
 $(window).resize(calculateThumbnailHeight);
 $(window).resize(positionKeywordCircles);
 
