@@ -12,7 +12,6 @@ var yyy;
 var initialPositionX;
 var initialPositionY;
 
-
 function generateKeywordcircles() {
   for(var i=0;i<keywords.length;i++){
     $div = $('<div />').appendTo('body');
@@ -59,21 +58,6 @@ function positionKeywordCircles() {
     }
 }
 
-
-
-
-
-function animateKeywordCircles() {
-  // A animate B if any of the animated objects is more than -200, remove from array
-    // $( ".circle1" ).animate({ "top": "100px" });
-  //drag out of Array
-  // for(var i=0;i<keywords.length;i++){
-  //
-  // }
-  // animate
-  // if
-}
-
 var calculateThumbnailHeight = (function () {
        var patternist02Height = $('#patternist02').height();
        $('.clipProjecttitle').css('height', patternist02Height);
@@ -82,9 +66,7 @@ var calculateThumbnailHeight = (function () {
        console.log(patternist02Height);
    });
 
-
-   // parallax
-
+// parallax
 var nononoyesno = document.querySelector(".textThumbnail");
 var bigCircle = document.querySelector(".circleBig");
 
@@ -132,7 +114,6 @@ $( ".contact" ).on( "click", function() {
 //     }
 // });
 
-
 $( document ).ready(function() {
   calculateThumbnailHeight();
   generateKeywordcircles();
@@ -140,56 +121,30 @@ $( document ).ready(function() {
   animateKeywordCircles();
 
   // animation auf Y-Achse Circles
-  var requestAnimFrame = (function(){
-    return  window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame    ||
-      window.oRequestAnimationFrame      ||
-      window.msRequestAnimationFrame     ||
-      function( callback, element ){
-        window.setTimeout(callback, 1000 / 60);
-      };
-  })();
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
+  var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
   var startTime = +(new Date());
-  var circle = document.getElementsByClassName('circle0')[0];
-  var updatePos;
-  var dif2 = yyy[0];
 
-  while (dif2 >= 50) {
-    (function update(){
-        var dif = (new Date()).getTime() - startTime; // zählt quasi als counter hoch
-        dif *= 0.01; // dif wird immer größer, muss also nur von yyy[0] abgezogen werden
-        dif2 -= dif;
-        circle.style.top = dif2 +'px';
-        console.log(circle.style.top);
-        requestAnimFrame( update, circle, dif2 );
-    })();
-    // updatePos = circle.style.top;
-   }
+  var circle = document.getElementsByClassName('circle0')[0];
+  var updatePos = yyy[0];
+  var dif2 = yyy[0];
+  var myReq;
+
+  function step() {
+    var dif = (new Date()).getTime() - startTime; // zählt als counter hoch
+    dif *= 0.01; // dif wird immer größer, muss also nur von yyy[0] abgezogen werden
+    console.log(updatePos); //muss drin bleiben
+    updatePos=dif2-dif;
+    circle.style.top = updatePos +'px';
+    if (updatePos > 50) {
+      myReq = requestAnimationFrame(step, circle);
+    }
+  }
+  myReq = requestAnimationFrame(step, circle);
 
 });
 
 $(window).resize(calculateThumbnailHeight);
 $(window).resize(positionKeywordCircles);
-
-// animate the circles with jquery
-
-
-// // animate the Circles with setInterval
-//
-// var updateCircleY = setInterval(animateCirclePosY, 60);
-//
-// function animateCirclePosY() {
-//     yyy[0] -= 0.5;
-//     yyy[1] -= 0.8;
-//     yyy[2] -= 1.5;
-//     yyy[3] -= 0.5;
-//     yyy[4] -= 0.5;
-//       for(var i=0;i<keywords.length;i++){
-//         $(".circle" +i).css("--keywordcircle-top", yyy[i]);
-//       }
-// }
-// function myStopFunction() {
-//     clearInterval(updateCircleY);
-// }
