@@ -62,7 +62,7 @@ table {
   top: 0; }
 
 .circle, .circle0, .circle1, .circle2, .circle3, .circle4 {
-  position: absolute;
+  position: fixed;
   width: 200px;
   height: 200px;
   top: var(--keywordcircle-top);
@@ -81,7 +81,7 @@ table {
   transition: 3s; }
 
 .textKeywords {
-  opacity: 0.2; }
+  opacity: 0.8; }
 
 #rotationCircle1 {
   -webkit-animation: spin0 8000ms infinite linear;
@@ -159,9 +159,6 @@ table {
     transform: translateY(-200px); } }
 html {
   --keywordcircle-top: 0; }
-
-body {
-  background-image: url(../images/AnnaLuiseLorenz_Patternist_00.jpg); }
 
 nav {
   position: fixed;

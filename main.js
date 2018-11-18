@@ -252,17 +252,14 @@ $( ".contact" ).on( "click", function() {
 
 
 var circleArrPos = new Array();
+var circleArrPosY = new Array();
 
 class KeywordCircle {
     constructor(initialX,initialY){
         this.initialX = initialX;
         this.initialY = initialY;
     }
-    drawCircle(){
-        // console.log();
-    }
 }
-
 
 function createCircles() { // produziert alle X und Y Werte
     for(var i=0;i<keywords.length;i++){
@@ -280,64 +277,48 @@ function createCircles() { // produziert alle X und Y Werte
         var initialY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
 
         circle = new KeywordCircle(initialX,initialY);
-
         circleArrPos.push(circle); // Array mit allen KeywordCircle Instanzen
-        console.log(circle.initialX);
     }
 }
 
 
+function draw() {
+    var dif = (new Date()).getTime() - startTime; // zählt als counter hoch
+    dif *= (-0.01);
+    for(var i=0;i<keywords.length;i++){
+        var circlesUpdate = circleArrPosY[i] + dif; // create 6 values which
+        circleArrPos[i].initialY = circlesUpdate;
+        $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
+  }
+  requestAnimationFrame(draw);
+}
 
 function drawFirstCircles() {
 
-  createCircles();
+    createCircles();
 
-  for(var i=0;i<keywords.length;i++){
-      $wrapper = $('<div />').appendTo('body');
-      $wrapper.attr('class', 'circleAnimation');
-      $div = $('<div />').appendTo($wrapper);
-      $p = $('<p />').appendTo($div);
-      $a = $('<a />').appendTo($p);
-      $a.attr('href', keywordsURL[i]);
-      $a.text( keywords[i] );
-      $p.attr('class', 'textKeywords');
-      $div.attr('class', 'circle'+ i);
-      // rotation
-      var rotation1 = 1;
-      var rotation2 = 2;
-      var rotation3 = 3;
-      var randomIdCircle = Math.random() < 0.5 ? rotation1 : (Math.random() < 0.5 ? rotation2 : rotation3);
-      $div.attr('id', 'rotationCircle'+ randomIdCircle);
-      // position
-      console.log(circleArrPos[i].initialX); // access circle an der Stelle 3 im Array und gib dessen x-Wert wieder
-      $(".circle" + i).css("left", circleArrPos[i].initialX);
-      $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
+    for(var i=0;i<keywords.length;i++){
+        $wrapper = $('<div />').appendTo('body');
+        $wrapper.attr('class', 'circleAnimation');
+        $div = $('<div />').appendTo($wrapper);
+        $p = $('<p />').appendTo($div);
+        $a = $('<a />').appendTo($p);
+        $a.attr('href', keywordsURL[i]);
+        $a.text( keywords[i] );
+        $p.attr('class', 'textKeywords');
+        $div.attr('class', 'circle'+ i);
+        // rotation
+        var rotation1 = 1;
+        var rotation2 = 2;
+        var rotation3 = 3;
+        var randomIdCircle = Math.random() < 0.5 ? rotation1 : (Math.random() < 0.5 ? rotation2 : rotation3);
+        $div.attr('id', 'rotationCircle'+ randomIdCircle);
+        // position (kann später mit updateCircles raus?)
+        $(".circle" + i).css("left", circleArrPos[i].initialX);
+        $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
+        circleArrPosY.push(circleArrPos[i].initialY);
     }
-
+    draw();
   }
-//
-// function updateCircles() {
-//     for (i = 0, i < keywords.length, i++) {
-//          var dif = (new Date()).getTime() - startTime; // zählt als counter hoch
-//          dif *= 0.01;
-//          // console.log(updatePos); //muss drin bleiben
-//          //     updatePos[i]=dif2[i]-dif; // hier 6 mal
-//          //     circle.style.top = updatePos[i] +'px';
-//          //     if (updatePos[i] > 50) {
-//          //       myReq = requestAnimationFrame(step, circle);
-//          //     }
-//
-//          //   $(".circle" + i).css("left", this.initialX);
-//          //   $(".circle" + i).css("--keywordcircle-top", this.currentY);
-//  }
-//
-//   requestAnimationFrame(updateCircles);
-//
-// }
-//
-// function updateCircles() {
-//
-// }
 
-// createCircles();
 drawFirstCircles();
