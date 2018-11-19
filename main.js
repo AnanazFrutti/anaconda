@@ -104,22 +104,32 @@ function draw() {
     var dif = (new Date()).getTime() - startTime; // zählt als counter hoch
     dif *= (-0.01);
     for(var i=0;i<keywords.length;i++){
+
         circlesUpdate = circleArrPosY[i] + dif;
         circleArrPos[i].initialY = circlesUpdate;
+        console.log("tralala "+i+" "+circleArrPos[i].initialY);
         $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
         // REBIRTH NEW CIRCLE
         if (circleArrPos[i].initialY < 50) {
-          //reset Y position:
-          rebirthCircles(i);
+          console.log(i);
+          console.log("davor: "+circleArrPosY[i]);
+          console.log(circleArrPos[i].initialY);
+          circleArrPosY[i] = window.innerHeight-100;//array updatet sich nicht
+          circleArrPos[i].initialY = circleArrPosY[i];
+          console.log("danach: "+circleArrPosY[i]);
+          console.log(circleArrPos[i].initialY);
+          // debugger;
         }
   }
+  console.log(circlesUpdate);
   requestAnimationFrame(draw);
 }
 
 function rebirthCircles(rebirthNumber) {
-  console.log(rebirthNumber);
-  circleArrPosY[rebirthNumber] = window.innerHeight-100;
-  draw();
+
+
+
+  draw(); // variable muss an die draw funktion übertragen werden
   // circlesUpdate = newRebirth;
   // $(".circle" + rebirthNumber).css("--keywordcircle-top", circleArrPosY[rebirthNumber].initialY);
   // // circleArrPos[i].initialX = 100;
