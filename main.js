@@ -24,6 +24,8 @@ var circle;
 var circleArrPos = new Array();
 var circleArrPosY = new Array();
 
+var circlesUpdate;
+
 
 $( ".cv" ).on( "click", function() {
   if (contactIsVisible == true) {
@@ -69,7 +71,7 @@ function createProjectlist() {
   console.log("updateSpanWrapperWidthArr " + updateSpanWrapperWidthArr);
 }
 
-
+// ----------------------------------------------------------------------------
 
 class KeywordCircle {
     constructor(initialX,initialY){
@@ -98,16 +100,33 @@ function createCircles() { // produziert alle X und Y Werte
     }
 }
 
-
 function draw() {
     var dif = (new Date()).getTime() - startTime; // zählt als counter hoch
     dif *= (-0.01);
     for(var i=0;i<keywords.length;i++){
-        var circlesUpdate = circleArrPosY[i] + dif; // create 6 values which
+        circlesUpdate = circleArrPosY[i] + dif;
         circleArrPos[i].initialY = circlesUpdate;
         $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
+        // REBIRTH NEW CIRCLE
+        if (circleArrPos[i].initialY < 50) {
+          //reset Y position:
+          rebirthCircles(i);
+        }
   }
   requestAnimationFrame(draw);
+}
+
+function rebirthCircles(rebirthNumber) {
+  console.log(rebirthNumber);
+  circleArrPosY[rebirthNumber] = window.innerHeight-100;
+  draw();
+  // circlesUpdate = newRebirth;
+  // $(".circle" + rebirthNumber).css("--keywordcircle-top", circleArrPosY[rebirthNumber].initialY);
+  // // circleArrPos[i].initialX = 100;
+  // // $(".circle" + i).css("left", circleArrPos[i].initialX);
+  //
+  // // // keywords[i] = "new keyword"; // tausch Inhalt aus (später flexibler mit einem Array)
+  // draw();
 }
 
 function drawFirstCircles() {
