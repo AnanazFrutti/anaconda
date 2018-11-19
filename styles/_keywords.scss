@@ -1,5 +1,6 @@
 $rotationSpeed: 8000ms;
 $rotationSpeed2: 800ms;
+$shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
 @mixin translateYCircles {
 
 }
@@ -60,10 +61,9 @@ $rotationSpeed2: 800ms;
   border-radius:50%;
   line-height:200px;
   text-align:center;
-  fill:red;
+  background-color: white;
   z-index:9999;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
-
 }
 
 .circleAnimation {
@@ -108,7 +108,8 @@ $rotationSpeed2: 800ms;
 // }
 
 .textKeywords {
-  opacity: 0.8;
+  text-shadow: $shadow;
+  color:white;
 }
 
 

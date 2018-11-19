@@ -105,12 +105,21 @@ p, a, span {
   font-size:25px;
   // line-height:30px;
   text-shadow: $shadow;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
   letter-spacing: -0.2px;
 }
 
 a {
   text-decoration: none;
+}
+.wrapperProject0, .wrapperProject1, .wrapperProject2, .wrapperProject3, .wrapperProject4, .wrapperProject5, .wrapperProject6, .wrapperProject7, .wrapperProject8, .wrapperProject9,.wrapperProject10, .wrapperProject11, .wrapperProject12, .wrapperProject13, .wrapperProject14, .wrapperProject15, .wrapperProject16, .wrapperProject17, .wrapperProject18, .wrapperProject19 {
+  display: inline-block;
+  white-space: nowrap;
+  margin-top: 10px;
+
+}
+.wrapperSpan {
+  padding-right: 10px;
 }
 
 .cvContent, .contactContent {

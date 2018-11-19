@@ -69,7 +69,7 @@ table {
   border-radius: 50%;
   line-height: 200px;
   text-align: center;
-  fill: red;
+  background-color: white;
   z-index: 9999;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26); }
 
@@ -81,7 +81,8 @@ table {
   transition: 3s; }
 
 .textKeywords {
-  opacity: 0.8; }
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
+  color: white; }
 
 #rotationCircle1 {
   -webkit-animation: spin0 8000ms infinite linear;
@@ -176,11 +177,18 @@ p, a, span {
   color: white;
   font-size: 25px;
   text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
-  mix-blend-mode: difference;
   letter-spacing: -0.2px; }
 
 a {
   text-decoration: none; }
+
+.wrapperProject0, .wrapperProject1, .wrapperProject2, .wrapperProject3, .wrapperProject4, .wrapperProject5, .wrapperProject6, .wrapperProject7, .wrapperProject8, .wrapperProject9, .wrapperProject10, .wrapperProject11, .wrapperProject12, .wrapperProject13, .wrapperProject14, .wrapperProject15, .wrapperProject16, .wrapperProject17, .wrapperProject18, .wrapperProject19 {
+  display: inline-block;
+  white-space: nowrap;
+  margin-top: 10px; }
+
+.wrapperSpan {
+  padding-right: 10px; }
 
 .cvContent, .contactContent {
   display: none;
