@@ -21,10 +21,15 @@ var circleArr = new Array();
 var startTime = +(new Date());
 var circle;
 
-var circleArrPos = new Array();
-var circleArrPosY = new Array();
+var circleObjectArr = new Array(); // Object mit allen Instanzen
+var circleObjectArrPosY = new Array(); // aus Object herausdistillierte y-Werte
+var stepArr = new Array(5);
 
-var circlesUpdate;
+
+var initialX;
+var initialY;
+
+var circlePosUpdate;
 
 
 $( ".cv" ).on( "click", function() {
@@ -80,70 +85,87 @@ class KeywordCircle {
     }
 }
 
-function createCircles() { // produziert alle X und Y Werte
-    for(var i=0;i<keywords.length;i++){
-        // create random initial positions
-        var grain = 100;
-        const randomPosX = Math.floor(Math.random() * grain);
-        const randomPosY = Math.floor(Math.random() * grain);
-        const scaleX = (randomPosX, in_min, in_max, out_min, out_max) => {
-        return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-        }
-        const scaleY = (randomPosY, in_min, in_max, out_min, out_max) => {
-        return (randomPosY - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-        }
-        var initialX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
-        var initialY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
-
-        circle = new KeywordCircle(initialX,initialY);
-        circleArrPos.push(circle); // Array mit allen KeywordCircle Instanzen
+function generateCirclePosition() { // 1.1
+    var grain = 100;
+    const randomPosX = Math.floor(Math.random() * grain);
+    const randomPosY = Math.floor(Math.random() * grain);
+    const scaleX = (randomPosX, in_min, in_max, out_min, out_max) => {
+    return (randomPosX - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
+    const scaleY = (randomPosY, in_min, in_max, out_min, out_max) => {
+    return (randomPosY - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+    initialX = scaleX(randomPosX,0, grain, 0, (window.innerWidth-diameterCircle));
+    initialY = scaleY(randomPosY,0, grain, 0, (window.innerHeight-diameterCircle));
 }
 
-function draw() {
-    var dif = (new Date()).getTime() - startTime; // zählt als counter hoch
-    dif *= (-0.01);
-    for(var i=0;i<keywords.length;i++){
+function createInitialCircles() { // 1.2
+    for(var i=0;i<5;i++){ //generates 5 initial circles
+        generateCirclePosition();
+        circle = new KeywordCircle(initialX,initialY);
+        circleObjectArr.push(circle); // Array mit allen KeywordCircle Instanzen
+        circleObjectArrPosY.push(circleObjectArr[i].initialY); // Array mit allen Keyword Instanzen y-Werten
+    }
+    // console.log("circleObjectArr: " + circleObjectArr);
+    console.log("circleObjectArrPosY: " + circleObjectArrPosY);
+}
 
-        circlesUpdate = circleArrPosY[i] + dif;
-        circleArrPos[i].initialY = circlesUpdate;
-        console.log("tralala "+i+" "+circleArrPos[i].initialY);
-        $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
-        // REBIRTH NEW CIRCLE
-        if (circleArrPos[i].initialY < 50) {
-          console.log(i);
-          console.log("davor: "+circleArrPosY[i]);
-          console.log(circleArrPos[i].initialY);
-          circleArrPosY[i] = window.innerHeight-100;//array updatet sich nicht
-          circleArrPos[i].initialY = circleArrPosY[i];
-          console.log("danach: "+circleArrPosY[i]);
-          console.log(circleArrPos[i].initialY);
-          // debugger;
+
+function updateCirclePos() {
+    var step = (new Date()).getTime() - startTime; // zählt als counter hoch
+    step *= (-0.01);
+
+    // for(var i=0;i<5;i++){
+    // }
+    // console.log("steppArr: " + stepArr); funktioniert
+
+    for(var i=0;i<5;i++){ //circleObjectArr verändert sich innerhalb der for Schleife, aber nicht außerhalb....
+      stepArr[i]=step;
+      circlePosUpdate = circleObjectArrPosY[i] + stepArr[i];
+      circleObjectArr[i].initialY = circlePosUpdate;
+      $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+
+        if (circleObjectArr[i].initialY < 50) {
+        circleObjectArrPosY[i] = 500;
+        updateCirclePos();
+        //   // generateCirclePosition();
+        //   circleObjectArr[i].initialY = 200;
+        //   console.log(circleObjectArr[i].initialY);
+        //   // $(".circle" + i).css("left", circleObjectArr[i].initialX);
+        //   $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+        //   // updateCirclePos(); // starte updateCircle von Anfang an
         }
+        // REBIRTH NEW CIRCLE
+        // if (circleObjectArr[i].initialY < 50) {
+
+
+          // updateCirclepos?
+          // generateCirclePosition();
+          // circle = new KeywordCircle(initialX,initialY);
+          // circleObjectArr.push(circle);
+          // $(".circle" + i).css("left", circleObjectArr[i].initialX);
+          // $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+          // circleObjectArrPosY.push(circleObjectArr[i].initialY);
+          //
+          // console.log(i);
+          // console.log("davor: "+circleObjectArrPosY[i]);
+          // console.log(circleArrPos[i].initialY);
+          // circleObjectArrPosY[i] = window.innerHeight-100;//array updatet sich nicht
+          // circleObjectArr[i].initialY = circleObjectArrPosY[i];
+          // console.log("danach: "+circleObjectArrPosY[i]);
+          // console.log(circleObjectArr[i].initialY);
+          // debugger;
+        // }
   }
-  console.log(circlesUpdate);
-  requestAnimationFrame(draw);
+  // console.log(circlePosUpdate);
+  // console.log(circleObjectArr);
+
+  requestAnimationFrame(updateCirclePos);
 }
 
-function rebirthCircles(rebirthNumber) {
-
-
-
-  draw(); // variable muss an die draw funktion übertragen werden
-  // circlesUpdate = newRebirth;
-  // $(".circle" + rebirthNumber).css("--keywordcircle-top", circleArrPosY[rebirthNumber].initialY);
-  // // circleArrPos[i].initialX = 100;
-  // // $(".circle" + i).css("left", circleArrPos[i].initialX);
-  //
-  // // // keywords[i] = "new keyword"; // tausch Inhalt aus (später flexibler mit einem Array)
-  // draw();
-}
-
-function drawFirstCircles() {
-
-    createCircles();
-
-    for(var i=0;i<keywords.length;i++){
+function drawFirstCircles() { // 2
+  // createInitialCircles(); //raus und stattdessen in document.ready function drinlassen?
+    for(var i=0;i<5;i++){
         $wrapper = $('<div />').appendTo('body');
         $wrapper.attr('class', 'circleAnimation');
         $div = $('<div />').appendTo($wrapper);
@@ -160,15 +182,29 @@ function drawFirstCircles() {
         var randomIdCircle = Math.random() < 0.5 ? rotation1 : (Math.random() < 0.5 ? rotation2 : rotation3);
         $div.attr('id', 'rotationCircle'+ randomIdCircle);
         // position (kann später mit updateCircles raus?)
-        $(".circle" + i).css("left", circleArrPos[i].initialX);
-        $(".circle" + i).css("--keywordcircle-top", circleArrPos[i].initialY);
-        circleArrPosY.push(circleArrPos[i].initialY);
+        $(".circle" + i).css("left", circleObjectArr[i].initialX);
+        $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
     }
-    draw();
+    // updateCirclePos(); //raus und stattdessen in document.ready function drinlassen?
   }
 
-   $(document).ready(function(){
+ $(document).ready(function(){
      createProjectlist();
+     createInitialCircles();
      drawFirstCircles();
+     updateCirclePos();
+ });
 
-   });
+ // function rebirthCircles(rebirthNumber) {
+ //
+ //
+ //
+ //   updateCirclePos(); // variable muss an die updateCirclePos funktion übertragen werden
+ //   // circlePosUpdate = newRebirth;
+ //   // $(".circle" + rebirthNumber).css("--keywordcircle-top", circleObjectArrPosY[rebirthNumber].initialY);
+ //   // // circleObjectArr[i].initialX = 100;
+ //   // // $(".circle" + i).css("left", circleObjectArr[i].initialX);
+ //   //
+ //   // // // keywords[i] = "new keyword"; // tausch Inhalt aus (später flexibler mit einem Array)
+ //   // updateCirclePos();
+ // }
