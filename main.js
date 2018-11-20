@@ -18,12 +18,18 @@ var yyy;
 var initialPositionX;
 var initialPositionY;
 var circleArr = new Array();
+
+
 var startTime = +(new Date());
+var startTimeArr = new Array(5);
+
 var circle;
 
 var circleObjectArr = new Array(); // Object mit allen Instanzen
 var circleObjectArrPosY = new Array(); // aus Object herausdistillierte y-Werte
 var stepArr = new Array(5);
+let start = null;
+
 
 
 var initialX;
@@ -118,49 +124,52 @@ function updateCirclePos() {
     // for(var i=0;i<5;i++){
     // }
     // console.log("steppArr: " + stepArr); funktioniert
+    function bla() {
+      for(var i=0;i<5;i++){ //circleObjectArr verändert sich innerhalb der for Schleife, aber nicht außerhalb....
+        stepArr[i]=step;
+        startTimeArr[i] = startTime;
+        circlePosUpdate = circleObjectArrPosY[i] + stepArr[i];
+        circleObjectArr[i].initialY = circlePosUpdate;
+        $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
 
-    for(var i=0;i<5;i++){ //circleObjectArr verändert sich innerhalb der for Schleife, aber nicht außerhalb....
-      stepArr[i]=step;
-      circlePosUpdate = circleObjectArrPosY[i] + stepArr[i];
-      circleObjectArr[i].initialY = circlePosUpdate;
-      $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+          if (circleObjectArr[i].initialY < 50) {
+            circleObjectArrPosY[i] = 500;
 
-        if (circleObjectArr[i].initialY < 50) {
-        circleObjectArrPosY[i] = 500;
-        updateCirclePos();
-        //   // generateCirclePosition();
-        //   circleObjectArr[i].initialY = 200;
-        //   console.log(circleObjectArr[i].initialY);
-        //   // $(".circle" + i).css("left", circleObjectArr[i].initialX);
-        //   $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
-        //   // updateCirclePos(); // starte updateCircle von Anfang an
+            startTime[i] = +(new Date()); // reset Starttime
+            updateCirclePos();
+            //   // generateCirclePosition();
+            //   circleObjectArr[i].initialY = 200;
+            //   console.log(circleObjectArr[i].initialY);
+            //   // $(".circle" + i).css("left", circleObjectArr[i].initialX);
+            //   $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+            //   // updateCirclePos(); // starte updateCircle von Anfang an
+          }
+          // REBIRTH NEW CIRCLE
+          // if (circleObjectArr[i].initialY < 50) {
+
+
+            // updateCirclepos?
+            // generateCirclePosition();
+            // circle = new KeywordCircle(initialX,initialY);
+            // circleObjectArr.push(circle);
+            // $(".circle" + i).css("left", circleObjectArr[i].initialX);
+            // $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+            // circleObjectArrPosY.push(circleObjectArr[i].initialY);
+            //
+            // console.log(i);
+            // console.log("davor: "+circleObjectArrPosY[i]);
+            // console.log(circleArrPos[i].initialY);
+            // circleObjectArrPosY[i] = window.innerHeight-100;//array updatet sich nicht
+            // circleObjectArr[i].initialY = circleObjectArrPosY[i];
+            // console.log("danach: "+circleObjectArrPosY[i]);
+            // console.log(circleObjectArr[i].initialY);
+            // debugger;
+          // }
+
         }
-        // REBIRTH NEW CIRCLE
-        // if (circleObjectArr[i].initialY < 50) {
+    }
+    requestAnimationFrame(updateCirclePos);
 
-
-          // updateCirclepos?
-          // generateCirclePosition();
-          // circle = new KeywordCircle(initialX,initialY);
-          // circleObjectArr.push(circle);
-          // $(".circle" + i).css("left", circleObjectArr[i].initialX);
-          // $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
-          // circleObjectArrPosY.push(circleObjectArr[i].initialY);
-          //
-          // console.log(i);
-          // console.log("davor: "+circleObjectArrPosY[i]);
-          // console.log(circleArrPos[i].initialY);
-          // circleObjectArrPosY[i] = window.innerHeight-100;//array updatet sich nicht
-          // circleObjectArr[i].initialY = circleObjectArrPosY[i];
-          // console.log("danach: "+circleObjectArrPosY[i]);
-          // console.log(circleObjectArr[i].initialY);
-          // debugger;
-        // }
-  }
-  // console.log(circlePosUpdate);
-  // console.log(circleObjectArr);
-
-  requestAnimationFrame(updateCirclePos);
 }
 
 function drawFirstCircles() { // 2
