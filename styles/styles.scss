@@ -179,6 +179,53 @@ a {
   clip-path: inset(0px 0px 0px 0px);
 }
 
+.uno {
+  position: relative;
+  padding-bottom: 200px;
+  padding-top: 500px;
+  height: var(--height-clip);
+  background-color: red;
+}
+
+.containerProject1 {
+  z-index: 0;
+  margin: auto;
+  position: absolute;
+}
+
+.containerThumbnailNEW1 {
+    width: 60%;
+    margin:auto;
+}
+
+.imageThumbnailNEW {
+  width: 100%;
+}
+
+.clipProjecttitleNEW1 { /*needs to have same dimension and position as containerProject */
+  margin: auto;
+  position: absolute;
+  width: 100%;  /* analog zu .containerProject */
+  height: var(--height-clip);
+  clip-path: inset(0px 0px 0px 0px);
+  z-index: 0;
+}
+
+.clipProjecttitleNEW2 { /*needs to have same dimension and position as containerThumbnailNEW2 */
+  margin: auto;
+  position: fixed;
+  width: 100%;  /* analog zu .containerProject */
+  // height:inherit; /* inherit from containerThumbnailNEW2 */
+  clip-path: inset(0px 0px 0px 0px);
+  z-index: 3;
+}
+
+
+.calculatePos {
+  height: var(--main-color);
+  width: 100%;
+}
+
 .posYProjecttitle {
   display: flex;
   align-items: center;
@@ -203,6 +250,19 @@ a {
 
 .top120 {
   top: 120%;
+}
+
+
+
+
+
+
+.containerProject2 {
+  padding-bottom: 200px;
+  background-color: blue;
+  height:800px;
+  z-index: 2;
+  position: relative;
 }
 
 

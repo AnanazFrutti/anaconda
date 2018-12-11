@@ -37,6 +37,40 @@ var initialY;
 
 var circlePosUpdate;
 
+// calculate scrollposition
+
+$(function() { /* jQuery short for $(document).ready(function() { ... }); */
+    // $('#dvContent2').hide();
+
+    // calculate scrollposition
+
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        console.log(scroll);
+        /* now compute browserheight = y*/
+        if (scroll >= 100) {
+            // $('#dvContent').hide();
+            // $('#dvContent2').show();
+            console.log("wenigerals100");
+        } else {
+            // $('#dvContent').show();
+            // $('#dvContent2').hide();
+            console.log("mehrals100");
+        }
+    });
+
+    // dynamically calculate and change value of clipProjecttitle based on Height of imageThumbnail
+
+    var imageHeight = $(".containerThumbnailNEW1").innerHeight();
+    $(".clipProjecttitleNEW1").css('--height-clip', imageHeight);
+    $(".uno").css('--height-clip', imageHeight);
+    console.log("innerHeight = " + imageHeight);
+
+})
+
+
+
+
 
 $( ".cv" ).on( "click", function() {
   if (contactIsVisible == true) {
