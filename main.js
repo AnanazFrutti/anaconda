@@ -249,15 +249,20 @@ function drawFirstCircles() { // 2
 
  var calculateThumbnailHeight = (function () {
          // dynamically calculate and change value of clipProjecttitle based on Height of imageThumbnail
-         var imageHeight = $(".containerThumbnailNEW1").innerHeight();
-         $(".clipProjecttitleNEW1").css('--height-clip', imageHeight);
+         var imageHeight = $(".containerThumbnail1").innerHeight();
+         $(".clipProjecttitle1").css('--height-clip', imageHeight);
          $(".uno").css('--height-clip', imageHeight);
          console.log("innerHeight = " + imageHeight);
 
-         var imageHeight2 = $(".containerThumbnailNEW2").innerHeight();
-         $(".clipProjecttitleNEW2").css('--height-clip2', imageHeight2);
+         var imageHeight2 = $(".containerThumbnail2").innerHeight();
+         $(".clipProjecttitle2").css('--height-clip2', imageHeight2);
          $(".due").css('--height-clip2', imageHeight2);
          console.log("innerHeight2 = " + imageHeight2);
+
+         var imageHeight3 = $(".containerThumbnail3").innerHeight();
+         $(".clipProjecttitle3").css('--height-clip3', imageHeight3);
+         $(".tres").css('--height-clip3', imageHeight3);
+         console.log("innerHeight3 = " + imageHeight3);
     });
   $(document).ready(calculateThumbnailHeight);
  $(window).resize(calculateThumbnailHeight);

@@ -76,7 +76,7 @@ table {
   border-radius: 300px;
 }
 
-$shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
+$shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 
 html {
   --keywordcircle-top: 0;
@@ -165,12 +165,12 @@ a {
   position:absolute;
 }
 
-.imageThumbnail{
-  display: block;
-  margin: auto;
-  width: 40%; /* size of image */
-  z-index: -999999;
-}
+// .imageThumbnail{
+//   display: block;
+//   margin: auto;
+//   width: 40%; /* size of image */
+//   z-index: -999999;
+// }
 
 .clipProjecttitle {
   margin: auto;
@@ -186,7 +186,7 @@ a {
   padding-bottom: 200px;
   padding-top: 500px;
   height: var(--height-clip);
-  background-color: red;
+  background-color: white;
 }
 
 .containerProject {
@@ -195,19 +195,19 @@ a {
   position: absolute;
 }
 
-.containerThumbnailNEW1 {
+.containerThumbnail1 {
     width: 60%;
     margin:auto;
 }
 
-.imageThumbnailNEW {
+.imageThumbnail {
   width: 100%;
 }
 
-.clipProjecttitleNEW1 { /*needs to have same dimension and position as containerProject */
+.clipProjecttitle1 {
   margin: auto;
   position: absolute;
-  width: 100%;  /* analog zu .containerProject */
+  width: 100%;
   height: var(--height-clip);
   clip-path: inset(0px 0px 0px 0px);
   z-index: 0;
@@ -226,7 +226,7 @@ a {
   transform: translate(0, -50%); /* bestimmt die vertikale Positionierung von Projecttitle */
   text-align: center;
   color:white;
-  opacity: 0.5;
+  opacity: 0.3;
   width: 70%;
   /* text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.9); */
 }
@@ -237,23 +237,46 @@ a {
   padding-bottom: 1200px;
   padding-top: 500px;
   height: var(--height-clip2);
-  background-color: blue;
+  background-color: white;
 }
 
-.clipProjecttitleNEW2 { /*needs to have same dimension and position as containerThumbnailNEW2 */
+.containerThumbnail2 {
+    width: 80%;
+    margin:auto;
+}
+
+.clipProjecttitle2 {
   margin: auto;
   position: absolute;
-  width: 100%;  /* analog zu .containerProject */
+  width: 100%;
   height: var(--height-clip2);
   clip-path: inset(0px 0px 0px 0px);
   z-index: 0;
 }
 
+// ------------ BILD 2 -------------
+.tres {
+  position: relative;
+  padding-bottom: 1200px;
+  padding-top: 500px;
+  height: var(--height-clip3);
+  background-color: white;
+}
 
-.containerThumbnailNEW2 {
-    width: 80%;
+.containerThumbnail3 {
+    width: 40%;
     margin:auto;
 }
+
+.clipProjecttitle3 {
+  margin: auto;
+  position: absolute;
+  width: 100%;
+  height: var(--height-clip3);
+  clip-path: inset(0px 0px 0px 0px);
+  z-index: 0;
+}
+
 
 
 .calculatePos {
