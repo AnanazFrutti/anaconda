@@ -179,6 +179,8 @@ a {
   clip-path: inset(0px 0px 0px 0px);
 }
 
+// ------- BILD 1 --------------
+
 .uno {
   position: relative;
   padding-bottom: 200px;
@@ -187,7 +189,7 @@ a {
   background-color: red;
 }
 
-.containerProject1 {
+.containerProject {
   z-index: 0;
   margin: auto;
   position: absolute;
@@ -211,21 +213,6 @@ a {
   z-index: 0;
 }
 
-.clipProjecttitleNEW2 { /*needs to have same dimension and position as containerThumbnailNEW2 */
-  margin: auto;
-  position: fixed;
-  width: 100%;  /* analog zu .containerProject */
-  // height:inherit; /* inherit from containerThumbnailNEW2 */
-  clip-path: inset(0px 0px 0px 0px);
-  z-index: 3;
-}
-
-
-.calculatePos {
-  height: var(--main-color);
-  width: 100%;
-}
-
 .posYProjecttitle {
   display: flex;
   align-items: center;
@@ -243,6 +230,38 @@ a {
   width: 70%;
   /* text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.9); */
 }
+
+// ------------ BILD 2 -------------
+.due {
+  position: relative;
+  padding-bottom: 1200px;
+  padding-top: 500px;
+  height: var(--height-clip2);
+  background-color: blue;
+}
+
+.clipProjecttitleNEW2 { /*needs to have same dimension and position as containerThumbnailNEW2 */
+  margin: auto;
+  position: absolute;
+  width: 100%;  /* analog zu .containerProject */
+  height: var(--height-clip2);
+  clip-path: inset(0px 0px 0px 0px);
+  z-index: 0;
+}
+
+
+.containerThumbnailNEW2 {
+    width: 80%;
+    margin:auto;
+}
+
+
+.calculatePos {
+  height: var(--main-color);
+  width: 100%;
+}
+
+
 
 .top70 {
   top: 70%;

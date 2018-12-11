@@ -59,12 +59,7 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
         }
     });
 
-    // dynamically calculate and change value of clipProjecttitle based on Height of imageThumbnail
 
-    var imageHeight = $(".containerThumbnailNEW1").innerHeight();
-    $(".clipProjecttitleNEW1").css('--height-clip', imageHeight);
-    $(".uno").css('--height-clip', imageHeight);
-    console.log("innerHeight = " + imageHeight);
 
 })
 
@@ -253,11 +248,16 @@ function drawFirstCircles() { // 2
  // });
 
  var calculateThumbnailHeight = (function () {
-        var patternist02Height = $('#patternist02').height();
-        $('.clipProjecttitle').css('height', patternist02Height);
-        var patternist03Height = $('#patternist03').height();
-        $('.clipProjecttitle2').css('height', patternist03Height);
-        console.log(patternist02Height);
+         // dynamically calculate and change value of clipProjecttitle based on Height of imageThumbnail
+         var imageHeight = $(".containerThumbnailNEW1").innerHeight();
+         $(".clipProjecttitleNEW1").css('--height-clip', imageHeight);
+         $(".uno").css('--height-clip', imageHeight);
+         console.log("innerHeight = " + imageHeight);
+
+         var imageHeight2 = $(".containerThumbnailNEW2").innerHeight();
+         $(".clipProjecttitleNEW2").css('--height-clip2', imageHeight2);
+         $(".due").css('--height-clip2', imageHeight2);
+         console.log("innerHeight2 = " + imageHeight2);
     });
   $(document).ready(calculateThumbnailHeight);
  $(window).resize(calculateThumbnailHeight);
