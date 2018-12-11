@@ -69,7 +69,6 @@ table {
   border-radius: 50%;
   line-height: 200px;
   text-align: center;
-  background-color: white;
   z-index: 9999;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26); }
 
@@ -187,6 +186,9 @@ a {
   white-space: nowrap;
   margin-top: 10px; }
 
+.wrapperSpans {
+  position: fixed; }
+
 .wrapperSpan {
   padding-right: 80px; }
 
@@ -204,73 +206,55 @@ a {
 /* #circles-row {
 	margin: -200px 0 0 200px; /*use width of circle here
 } */
-.imageThumbnailScrollarea-left {
+.imageThumbnail-middle {
   position: absolute;
-  left: 0px;
-  top: 400px;
-  /* positions image on yAxis */
-  width: 50%;
-  /* width of image */
-  height: 100%; }
+  display: block;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 200px;
+  right: 0; }
 
-.imageThumbnailScrollarea-right {
-  position: absolute;
-  right: 0px;
-  top: 1400px;
-  /* positions image on yAxis */
-  width: 50%;
-  /* width of image */
-  height: 100%; }
+.imageThumbnailScrollarea {
+  position: absolute; }
 
 .imageThumbnail {
-  width: 100%;
-  z-index: -2; }
+  display: block;
+  margin: auto;
+  width: 40%;
+  /* size of image */
+  z-index: -999999; }
 
 .clipProjecttitle {
+  margin: auto;
   position: absolute;
-  left: 0px;
-  /* analog zu .imageThumbnailScrollarea */
-  top: 400px;
-  /* analog zu .imageThumbnailScrollarea */
-  width: 50%;
-  /* analog zu .imageThumbnailScrollarea */
-  height: 100%;
-  /* analog zu .imageThumbnailScrollarea */
-  clip-path: inset(0px 0px 0px 0px); }
-
-.clipProjecttitle2 {
-  position: absolute;
-  right: 0px;
-  /* analog zu .imageThumbnailScrollarea */
-  top: 1400px;
-  /* analog zu .imageThumbnailScrollarea */
-  width: 50%;
-  /* analog zu .imageThumbnailScrollarea */
-  height: 100%;
+  width: 100%;
   /* analog zu .imageThumbnailScrollarea */
   clip-path: inset(0px 0px 0px 0px); }
 
 .posYProjecttitle {
-  position: fixed;
-  top: 200px;
-  /* bestimmt die vertikale Positionierung von Projecttitle */
-  left: inherit;
-  width: inherit;
-  height: 333.33px; }
-
-.posYProjecttitle2 {
-  position: fixed;
-  top: 600px;
-  /* bestimmt die vertikale Positionierung von Projecttitle */
-  left: inherit;
-  width: inherit;
-  height: 333.33px; }
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .projecttitle {
+  position: fixed;
+  margin: 0;
+  top: 50%;
+  /* bestimmt die vertikale Positionierung von Projecttitle */
+  transform: translate(0, -50%);
+  /* bestimmt die vertikale Positionierung von Projecttitle */
   text-align: center;
-  color: grey;
+  color: white;
   opacity: 0.5;
+  width: 70%;
   /* text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.9); */ }
+
+.top70 {
+  top: 70%; }
+
+.top120 {
+  top: 120%; }
 
 .transparentBoxWithShadow {
   width: 300px;

@@ -60,6 +60,20 @@ var initialSpanWrapperWidthArr = new Array();
 var spanWrapperWidth;
 var updateSpanWrapperWidthArr;
 
+var element = document.body;
+
+console.log(window.innerHeight);
+
+function myScroll() {
+  // var elem = $('body,html').scrollTop();
+  var elmnt = document.body;
+    var x = elmnt.scrollLeft;
+    var y = elmnt.scrollTop;
+    console.log(y);
+}
+
+myScroll();
+
 function createProjectlist() {
 
   updateSpanWrapperWidthArr = new Array(projectlist.length);
@@ -132,18 +146,18 @@ function updateCirclePos() {
         circleObjectArr[i].initialY = circlePosUpdate;
         $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
 
-          if (circleObjectArr[i].initialY < 50) {
-            circleObjectArrPosY[i] = 500;
-
-            startTime[i] = +(new Date()); // reset Starttime
-            updateCirclePos();
-            //   // generateCirclePosition();
-            //   circleObjectArr[i].initialY = 200;
-            //   console.log(circleObjectArr[i].initialY);
-            //   // $(".circle" + i).css("left", circleObjectArr[i].initialX);
-            //   $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
-            //   // updateCirclePos(); // starte updateCircle von Anfang an
-          }
+          // if (circleObjectArr[i].initialY < 50) {
+          //   circleObjectArrPosY[i] = 500;
+          //
+          //   startTime[i] = +(new Date()); // reset Starttime
+          //   updateCirclePos();
+          //   //   // generateCirclePosition();
+          //   //   circleObjectArr[i].initialY = 200;
+          //   //   console.log(circleObjectArr[i].initialY);
+          //   //   // $(".circle" + i).css("left", circleObjectArr[i].initialX);
+          //   //   $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
+          //   //   // updateCirclePos(); // starte updateCircle von Anfang an
+          // }
           // REBIRTH NEW CIRCLE
           // if (circleObjectArr[i].initialY < 50) {
 
@@ -197,23 +211,19 @@ function drawFirstCircles() { // 2
     // updateCirclePos(); //raus und stattdessen in document.ready function drinlassen?
   }
 
- $(document).ready(function(){
-     createProjectlist();
-     createInitialCircles();
-     drawFirstCircles();
-     updateCirclePos();
- });
+ // $(document).ready(function(){
+ //     createProjectlist();
+ //     createInitialCircles();
+ //     drawFirstCircles();
+ //     updateCirclePos();
+ // });
 
- // function rebirthCircles(rebirthNumber) {
- //
- //
- //
- //   updateCirclePos(); // variable muss an die updateCirclePos funktion übertragen werden
- //   // circlePosUpdate = newRebirth;
- //   // $(".circle" + rebirthNumber).css("--keywordcircle-top", circleObjectArrPosY[rebirthNumber].initialY);
- //   // // circleObjectArr[i].initialX = 100;
- //   // // $(".circle" + i).css("left", circleObjectArr[i].initialX);
- //   //
- //   // // // keywords[i] = "new keyword"; // tausch Inhalt aus (später flexibler mit einem Array)
- //   // updateCirclePos();
- // }
+ var calculateThumbnailHeight = (function () {
+        var patternist02Height = $('#patternist02').height();
+        $('.clipProjecttitle').css('height', patternist02Height);
+        var patternist03Height = $('#patternist03').height();
+        $('.clipProjecttitle2').css('height', patternist03Height);
+        console.log(patternist02Height);
+    });
+  $(document).ready(calculateThumbnailHeight);
+ $(window).resize(calculateThumbnailHeight);
