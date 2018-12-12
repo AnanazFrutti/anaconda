@@ -37,12 +37,28 @@ var initialY;
 
 var circlePosUpdate;
 
+
+
 // calculate scrollposition
 
 $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     // $('#dvContent2').hide();
 
     // calculate scrollposition
+    $(".projecttext").hide();
+
+    // $( ".projecttitleContainer" ).hover(
+    //   function() {
+    //     console.log("works in");
+    //     $(this).css('cursor', 'pointer');
+    //     $(this).hide();
+    //     $(".projecttext").show();
+    //   }, function() {
+    //     console.log("works out");
+    //     $(this).show();
+    //     $(".projecttext").hide();
+    //   }
+    // );
 
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
@@ -51,15 +67,27 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
         if (scroll >= 100) {
             // $('#dvContent').hide();
             // $('#dvContent2').show();
-            console.log("wenigerals100");
         } else {
             // $('#dvContent').show();
             // $('#dvContent2').hide();
-            console.log("mehrals100");
         }
     });
 
 
+    $( ".projecttitleContainer" ).mouseenter(function() {
+      $( this ).stop().animate({
+        opacity: 0,
+      }, 400, function() {
+          $( '.containerProjecttitle').stop().css('display', 'block');
+      });
+    });
+    $( ".projecttitleContainer" ).mouseleave(function() {
+      $( this ).stop().animate({
+        opacity: 1,
+      }, 400, function() {
+          $( '.containerProjecttitle').stop().css('display', 'none');
+      });
+    });
 
 })
 
@@ -237,15 +265,22 @@ function drawFirstCircles() { // 2
         $(".circle" + i).css("left", circleObjectArr[i].initialX);
         $(".circle" + i).css("--keywordcircle-top", circleObjectArr[i].initialY);
     }
+
+    $('.aboutIcon').css("left", initialX);
+    $('.aboutIcon').css("top", initialY);
+    $('.aboutIcon').attr('id', 'rotationCircle2');
+
     // updateCirclePos(); //raus und stattdessen in document.ready function drinlassen?
   }
 
- // $(document).ready(function(){
- //     createProjectlist();
- //     createInitialCircles();
- //     drawFirstCircles();
- //     updateCirclePos();
- // });
+ $(document).ready(function(){
+     createProjectlist();
+     createInitialCircles();
+     drawFirstCircles();
+     updateCirclePos();
+ });
+
+
 
  var calculateThumbnailHeight = (function () {
          // dynamically calculate and change value of clipProjecttitle based on Height of imageThumbnail
@@ -264,5 +299,6 @@ function drawFirstCircles() { // 2
          $(".tres").css('--height-clip3', imageHeight3);
          console.log("innerHeight3 = " + imageHeight3);
     });
-  $(document).ready(calculateThumbnailHeight);
- $(window).resize(calculateThumbnailHeight);
+
+$(document).ready(calculateThumbnailHeight);
+$(window).resize(calculateThumbnailHeight);
