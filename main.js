@@ -35,32 +35,9 @@ var initialY;
 
 var circlePosUpdate;
 
-// SLIDESHOW
-
 var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-
-  slides[slideIndex-1].style.display = "block";
-}
-
-// END SLIDESHOW
+var closeSlideshow = false;
+var counter = 0;
 
 // calculate scrollposition
 
@@ -96,7 +73,6 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
         }
     });
 
-
     // $( ".projecttitleContainer" ).mouseenter(function() {
     //   $( this ).stop().animate({
     //     opacity: 0,
@@ -117,16 +93,54 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     // });
     //
 
-    $(document).click(function() {
-         $('.slideshow-container').addClass('hide').removeClass('show');
-    });
 
-    $(".projecttitleContainer").click(function(event) {
-        $('.slideshow-container').addClass('show').removeClass('hide');
-        event.stopPropagation();
-    });
 
-})
+
+});
+
+
+showSlides(slideIndex); // zeigt erstes Bild an
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+counter++;
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1;}
+  if (n < 1) {slideIndex = slides.length;}
+  if (counter > slides.length) {
+       $('.slideshow-container').addClass('hide').removeClass('show');
+       closeSlideshow = true;
+       // n = 1; //slideIndex?
+       counter = 1;
+  }
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+  console.log("counter" + counter);
+}
+
+
+$(document).click(function() {
+    if (closeSlideshow==true) {
+        $('.slideshow-container').addClass('hide').removeClass('show');
+        closeSlideshow = false;
+    }
+});
+
+$(".projecttitleContainer").click(function(event) {
+
+    $('.slideshow-container').addClass('show').removeClass('hide');
+    event.stopPropagation();
+});
 
 
 
