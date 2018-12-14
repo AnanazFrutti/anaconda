@@ -77,6 +77,7 @@ table {
 }
 
 $shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+$textShadow: 0px 2px 3px rgba(0, 0, 0, 1);
 
 html {
   --keywordcircle-top: 0;
@@ -99,31 +100,36 @@ nav > * {
   margin-right: 15px;
 }
 
-p, a, span {
+p,  span {
   font-family:fonttt, sans-serif;
   color: white;
   font-size:25px;
-  // line-height:30px;
-  text-shadow: $shadow;
-  // mix-blend-mode: difference;
+  text-shadow: $textShadow;
   letter-spacing: -0.2px;
+  opacity:0.5;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
+
+.textKeywords a {
+  mix-blend-mode: difference;
+  color: blue;
+}
+
 .wrapperProject0, .wrapperProject1, .wrapperProject2, .wrapperProject3, .wrapperProject4, .wrapperProject5, .wrapperProject6, .wrapperProject7, .wrapperProject8, .wrapperProject9,.wrapperProject10, .wrapperProject11, .wrapperProject12, .wrapperProject13, .wrapperProject14, .wrapperProject15, .wrapperProject16, .wrapperProject17, .wrapperProject18, .wrapperProject19 {
   display: inline-block;
   white-space: nowrap;
   margin-top: 10px;
-
 }
 
 .wrapperSpans{
   position: fixed;
 }
-.wrapperSpan {
 
+.wrapperSpan {
   padding-right: 80px;
 }
 
@@ -136,47 +142,86 @@ a {
   display: inline;
 }
 
-
 .circle p, .circleleft p{
   line-height: 200px;
   opacity:0.2;
 }
-
-/* #circles-row {
-	margin: -200px 0 0 200px; /*use width of circle here
-} */
-
-.imageThumbnail-middle {
-    position: absolute;
-    display: block;
-    margin: auto;
-    top: 0; left: 0; bottom: 200px; right: 0;
-}
-
-// .imageThumbnailScrollarea-right {
-//   position:absolute;
-//   right: 0px;
-//   top:1400px; /* positions image on yAxis */
-//   width: 50%; /* width of image */
-//   height: 100%;
-// }
-
-.imageThumbnailScrollarea {
-  position:absolute;
-}
-
-// .imageThumbnail{
-//   display: block;
-//   margin: auto;
-//   width: 40%; /* size of image */
-//   z-index: -999999;
-// }
 
 .clipProjecttitle {
   margin: auto;
   position: absolute;
   width: 100%;  /* analog zu .imageThumbnailScrollarea */
   clip-path: inset(0px 0px 0px 0px);
+}
+
+// ------- SLIDESHOW -----------
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
 
 // ------- BILD 1 --------------
@@ -211,24 +256,53 @@ a {
   height: var(--height-clip);
   clip-path: inset(0px 0px 0px 0px);
   z-index: 0;
+
 }
 
 .posYProjecttitle {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 }
 
-.projecttitle {
+.projecttitleContainer{
   position: fixed;
   margin:0;
   top:50%; /* bestimmt die vertikale Positionierung von Projecttitle */
   transform: translate(0, -50%); /* bestimmt die vertikale Positionierung von Projecttitle */
+  max-width: 70%;
+  display: block;
+}
+
+.projecttitle, .projecttitle1 {
   text-align: center;
   color:white;
+  pointer-events: all;
   opacity: 0.3;
-  width: 70%;
-  /* text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.9); */
+}
+
+.projecttitle1MouseOver {
+  text-align: center;
+  color:white;
+  max-width: 70%;
+  margin:auto;
+  opacity: 0.3;
+}
+
+.containerProjecttitle {
+  position: fixed;
+  display: none;
+  margin:0;
+  top:50%;
+  transform: translate(0, -50%);
+  // background-color: red;
+  width: 100%;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
 }
 
 // ------------ BILD 2 -------------
@@ -241,7 +315,7 @@ a {
 }
 
 .containerThumbnail2 {
-    width: 80%;
+    width: 100%;
     margin:auto;
 }
 
@@ -254,7 +328,7 @@ a {
   z-index: 0;
 }
 
-// ------------ BILD 2 -------------
+// ------------ BILD 3 -------------
 .tres {
   position: relative;
   padding-bottom: 1200px;
@@ -277,14 +351,19 @@ a {
   z-index: 0;
 }
 
+.aboutIcon {
+  position: fixed;
+}
+
+.aboutImage {
+  width: 60px;
+}
 
 
 .calculatePos {
   height: var(--main-color);
   width: 100%;
 }
-
-
 
 .top70 {
   top: 70%;
@@ -293,11 +372,6 @@ a {
 .top120 {
   top: 120%;
 }
-
-
-
-
-
 
 .containerProject2 {
   padding-bottom: 200px;
@@ -321,8 +395,6 @@ a {
 	width: 33.3%;
 	float: left;
 }
-
-
 
 .image-bg {
   padding-bottom: 50px;

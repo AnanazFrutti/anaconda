@@ -70,7 +70,8 @@ table {
   line-height: 200px;
   text-align: center;
   z-index: 9999;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26); }
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
+  pointer-events: none; }
 
 .circle0.vertTranslate {
   -webkit-transition: top 3s;
@@ -80,7 +81,7 @@ table {
   transition: 3s; }
 
 .textKeywords {
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.26);
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
   color: white; }
 
 #rotationCircle1 {
@@ -171,15 +172,21 @@ nav > * {
   display: inline;
   margin-right: 15px; }
 
-p, a, span {
+p, span {
   font-family: fonttt, sans-serif;
   color: white;
   font-size: 25px;
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-  letter-spacing: -0.2px; }
+  text-shadow: 0px 2px 3px black;
+  letter-spacing: -0.2px;
+  opacity: 0.5; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
+
+.textKeywords a {
+  mix-blend-mode: difference;
+  color: blue; }
 
 .wrapperProject0, .wrapperProject1, .wrapperProject2, .wrapperProject3, .wrapperProject4, .wrapperProject5, .wrapperProject6, .wrapperProject7, .wrapperProject8, .wrapperProject9, .wrapperProject10, .wrapperProject11, .wrapperProject12, .wrapperProject13, .wrapperProject14, .wrapperProject15, .wrapperProject16, .wrapperProject17, .wrapperProject18, .wrapperProject19 {
   display: inline-block;
@@ -202,21 +209,6 @@ a {
 .circle p, .circleleft p {
   line-height: 200px;
   opacity: 0.2; }
-
-/* #circles-row {
-	margin: -200px 0 0 200px; /*use width of circle here
-} */
-.imageThumbnail-middle {
-  position: absolute;
-  display: block;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 200px;
-  right: 0; }
-
-.imageThumbnailScrollarea {
-  position: absolute; }
 
 .clipProjecttitle {
   margin: auto;
@@ -255,20 +247,44 @@ a {
 .posYProjecttitle {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  overflow: auto; }
 
-.projecttitle {
+.projecttitleContainer {
   position: fixed;
   margin: 0;
   top: 50%;
   /* bestimmt die vertikale Positionierung von Projecttitle */
   transform: translate(0, -50%);
   /* bestimmt die vertikale Positionierung von Projecttitle */
+  max-width: 70%;
+  display: block; }
+
+.projecttitle, .projecttitle1 {
   text-align: center;
   color: white;
-  opacity: 0.3;
-  width: 70%;
-  /* text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.9); */ }
+  pointer-events: all;
+  opacity: 0.3; }
+
+.projecttitle1MouseOver {
+  text-align: center;
+  color: white;
+  max-width: 70%;
+  margin: auto;
+  opacity: 0.3; }
+
+.containerProjecttitle {
+  position: fixed;
+  display: none;
+  margin: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 100%;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer; }
 
 .due {
   position: relative;
@@ -278,7 +294,7 @@ a {
   background-color: white; }
 
 .containerThumbnail2 {
-  width: 80%;
+  width: 100%;
   margin: auto; }
 
 .clipProjecttitle2 {
@@ -307,6 +323,12 @@ a {
   height: var(--height-clip3);
   clip-path: inset(0px 0px 0px 0px);
   z-index: 0; }
+
+.aboutIcon {
+  position: fixed; }
+
+.aboutImage {
+  width: 60px; }
 
 .calculatePos {
   height: var(--main-color);

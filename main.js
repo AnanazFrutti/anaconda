@@ -30,6 +30,37 @@ var circleObjectArrPosY = new Array(); // aus Object herausdistillierte y-Werte
 var stepArr = new Array(5);
 let start = null;
 
+// SLIDESHOW
+
+// var slideIndex = 1;
+// showSlides(slideIndex);
+//
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
+//
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
+//
+// function showSlides(n) {
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//   var dots = document.getElementsByClassName("dot");
+//   if (n > slides.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[slideIndex-1].style.display = "block";
+//   dots[slideIndex-1].className += " active";
+// }
+
+
+// END SLIDESHOW
 
 
 var initialX;
@@ -74,20 +105,28 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     });
 
 
-    $( ".projecttitleContainer" ).mouseenter(function() {
-      $( this ).stop().animate({
-        opacity: 0,
-      }, 400, function() {
-          $( '.containerProjecttitle').stop().css('display', 'block');
-      });
-    });
-    $( ".projecttitleContainer" ).mouseleave(function() {
-      $( this ).stop().animate({
-        opacity: 1,
-      }, 400, function() {
-          $( '.containerProjecttitle').stop().css('display', 'none');
-      });
-    });
+    // $( ".projecttitleContainer" ).mouseenter(function() {
+    //   $( this ).stop().animate({
+    //     opacity: 0,
+    //   }, 400, function() {
+    //       $( '.containerProjecttitle').stop().css('display', 'block').animate({
+    //         opacity: 1,
+    //       }, 400);
+    //   });
+    // });
+    // $( ".projecttitleContainer" ).mouseleave(function() {
+    //   $( this ).stop().animate({
+    //     opacity: 1,
+    //   }, 400, function() {
+    //       $( '.containerProjecttitle').stop().css('display', 'block').animate({
+    //         opacity: 0,
+    //       }, 400);
+    //   });
+    // });
+    //
+    // $( ".projecttitleContainer" ).on( "click", function() {
+    //         // enter Overlay
+    // });
 
 })
 
