@@ -30,45 +30,37 @@ var circleObjectArrPosY = new Array(); // aus Object herausdistillierte y-Werte
 var stepArr = new Array(5);
 let start = null;
 
-// SLIDESHOW
-
-// var slideIndex = 1;
-// showSlides(slideIndex);
-//
-// function plusSlides(n) {
-//   showSlides(slideIndex += n);
-// }
-//
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
-//
-// function showSlides(n) {
-//   var i;
-//   var slides = document.getElementsByClassName("mySlides");
-//   var dots = document.getElementsByClassName("dot");
-//   if (n > slides.length) {slideIndex = 1}
-//   if (n < 1) {slideIndex = slides.length}
-//   for (i = 0; i < slides.length; i++) {
-//       slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//       dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex-1].style.display = "block";
-//   dots[slideIndex-1].className += " active";
-// }
-
-
-// END SLIDESHOW
-
-
 var initialX;
 var initialY;
 
 var circlePosUpdate;
 
+// SLIDESHOW
 
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+}
+
+// END SLIDESHOW
 
 // calculate scrollposition
 
@@ -124,9 +116,15 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     //   });
     // });
     //
-    // $( ".projecttitleContainer" ).on( "click", function() {
-    //         // enter Overlay
-    // });
+
+    $(document).click(function() {
+         $('.slideshow-container').addClass('hide').removeClass('show');
+    });
+
+    $(".projecttitleContainer").click(function(event) {
+        $('.slideshow-container').addClass('show').removeClass('hide');
+        event.stopPropagation();
+    });
 
 })
 

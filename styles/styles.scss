@@ -83,6 +83,9 @@ html {
   --keywordcircle-top: 0;
 }
 
+// * {box-sizing:border-box}
+
+
 body {
   // background-image: url(../images/AnnaLuiseLorenz_Patternist_00.jpg);
 }
@@ -159,8 +162,22 @@ a {
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
-  position: relative;
+  position: fixed;
+  top:50%;
+  transform: translate(0, -50%);
+  left:0;
+  right:0;
   margin: auto;
+  display:none;
+  z-index: 9999999;
+}
+
+.hide {
+  display:none;
+}
+
+.show {
+  display: block;
 }
 
 /* Hide the images by default */
