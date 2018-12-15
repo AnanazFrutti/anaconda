@@ -110,24 +110,43 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-counter++;
+    counter++;
   var i;
-  var slides = document.getElementsByClassName("mySlides");
+  var slides = document.getElementsByClassName("mySlides1");// hier + j und dann i zuweisen je nachdem auf welches project man geklickt hat // ist quasi  [mySlides[0], mySlides[1],...], da er alle Klassen einbezieht
   if (n > slides.length) {slideIndex = 1;}
   if (n < 1) {slideIndex = slides.length;}
   if (counter > slides.length) {
        $('.slideshow-container').addClass('hide').removeClass('show');
        closeSlideshow = true;
-       // n = 1; //slideIndex?
        counter = 1;
   }
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
-  console.log("counter" + counter);
 }
 
+$(".projecttitleContainer").click(function(event) {
+    // show gallery based on class name of parent of clicked element
+    var currentParent = $(document).find(this).parent().parent().attr('class');
+    console.log(currentParent);
+
+    switch (currentParent) {
+      case "clipProjecttitle1":
+        $('.slideshow-container').addClass('show').removeClass('hide');
+        j=1;
+        break;
+      case "clipProjecttitle2":
+        console.log("Apples are $0.32 a pound.");
+        j=2;
+        break;
+      case "clipProjecttitle3":
+        console.log("Bananas are $0.48 a pound.");
+        j=3;
+        break;
+    }
+    event.stopPropagation();
+});
 
 $(document).click(function() {
     if (closeSlideshow==true) {
@@ -136,11 +155,7 @@ $(document).click(function() {
     }
 });
 
-$(".projecttitleContainer").click(function(event) {
 
-    $('.slideshow-container').addClass('show').removeClass('hide');
-    event.stopPropagation();
-});
 
 
 

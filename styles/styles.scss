@@ -161,7 +161,7 @@ a {
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 100%;
   position: fixed;
   top:50%;
   transform: translate(0, -50%);
@@ -181,7 +181,7 @@ a {
 }
 
 /* Hide the images by default */
-.mySlides {
+.mySlides1, .mySlides2 {
   display: none;
 }
 
