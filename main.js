@@ -110,10 +110,15 @@ function selectParent() {
         $('.slideshow-container').addClass('show').removeClass('hide');
         console.log(currentParent);
         j=1;
+        $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides1' )).css('display', 'none');
+        $('.mySlides1:first').css('display', 'block');
         break;
       case "clipProjecttitle2":
-        console.log("Apples are $0.32 a pound.");
+        $('.slideshow-container').addClass('show').removeClass('hide');
+        console.log(currentParent);
         j=2;
+        $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides2' )).css('display', 'none');
+        $('.mySlides2:first').css('display', 'block');
         break;
       case "clipProjecttitle3":
         console.log("Bananas are $0.48 a pound.");
@@ -137,11 +142,11 @@ function showSlides(n) {
     counter++;
   var i;
   var slides = document.getElementsByClassName("mySlides" + j);
-  debugger;
   if (n > slides.length) {slideIndex = 1;}
   if (n < 1) {slideIndex = slides.length;}
   if (counter > slides.length) {
        $('.slideshow-container').addClass('hide').removeClass('show');
+       // slides.style.display = 'yellow';
        closeSlideshow = true;
        counter = 1;
   }
@@ -149,6 +154,7 @@ function showSlides(n) {
       slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
+
 }
 
 
