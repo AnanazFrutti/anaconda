@@ -38,6 +38,9 @@ var circlePosUpdate;
 var slideIndex = 1;
 var closeSlideshow = false;
 var counter = 0;
+var j = 1;
+
+var currentParent;
 
 // calculate scrollposition
 
@@ -92,12 +95,33 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     //   });
     // });
     //
-
-
-
-
 });
 
+$(".projecttitleContainer").click(function(event, j) {
+    // show gallery based on class name of parent of clicked element
+    currentParent = $(document).find(this).parent().parent().attr('class');
+    selectParent(currentParent);
+    event.stopPropagation();
+});
+
+function selectParent() {
+    switch (currentParent) {
+      case "clipProjecttitle1":
+        $('.slideshow-container').addClass('show').removeClass('hide');
+        console.log(currentParent);
+        j=1;
+        break;
+      case "clipProjecttitle2":
+        console.log("Apples are $0.32 a pound.");
+        j=2;
+        break;
+      case "clipProjecttitle3":
+        console.log("Bananas are $0.48 a pound.");
+        j=3;
+        break;
+    }
+    return j;
+}
 
 showSlides(slideIndex); // zeigt erstes Bild an
 
@@ -112,7 +136,8 @@ function currentSlide(n) {
 function showSlides(n) {
     counter++;
   var i;
-  var slides = document.getElementsByClassName("mySlides1");// hier + j und dann i zuweisen je nachdem auf welches project man geklickt hat // ist quasi  [mySlides[0], mySlides[1],...], da er alle Klassen einbezieht
+  var slides = document.getElementsByClassName("mySlides" + j);
+  debugger;
   if (n > slides.length) {slideIndex = 1;}
   if (n < 1) {slideIndex = slides.length;}
   if (counter > slides.length) {
@@ -126,27 +151,7 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
 }
 
-$(".projecttitleContainer").click(function(event) {
-    // show gallery based on class name of parent of clicked element
-    var currentParent = $(document).find(this).parent().parent().attr('class');
-    console.log(currentParent);
 
-    switch (currentParent) {
-      case "clipProjecttitle1":
-        $('.slideshow-container').addClass('show').removeClass('hide');
-        j=1;
-        break;
-      case "clipProjecttitle2":
-        console.log("Apples are $0.32 a pound.");
-        j=2;
-        break;
-      case "clipProjecttitle3":
-        console.log("Bananas are $0.48 a pound.");
-        j=3;
-        break;
-    }
-    event.stopPropagation();
-});
 
 $(document).click(function() {
     if (closeSlideshow==true) {
