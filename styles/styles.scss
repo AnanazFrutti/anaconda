@@ -190,20 +190,18 @@ a {
   transform: translate(0, -50%);
   left:0;
   right:0;
-  margin: 0;
+  margin: auto; //0
   display:none;
   z-index: 9999999;
 }
 
 .hide {
-  visibility: hidden;
-  opacity: 0;
+  display: none;
 
 }
 
 .show {
-  visibility: visible;
-  opacity: 1;
+  display: block;
 }
 
 
