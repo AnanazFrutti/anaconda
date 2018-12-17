@@ -111,6 +111,7 @@ function selectParent() {
         console.log(currentParent);
         j=1;
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides1' )).css('display', 'none');
+        $('.yes').css('display', 'block'); // show text
         $('.mySlides1:first').css('display', 'block');
         $('.mySlides1:first').addClass('width2');
         break;
@@ -158,14 +159,14 @@ function showSlides(n) {
   if (n > slides.length) {
       slideIndex = 1;
   }
-  if (n < 1) {slideIndex = slides.length;}
+  if (n < 1) {slideIndex = slides.length;} // rückwärts klicken >> index springt auf das letzte Bild
   if (counter > slides.length) {
        $('.slideshow-container').addClass('hide').removeClass('show');
        slides.className = "mySlides" + j + " fade";
        closeSlideshow = true;
        counter = 1;
   }
-  for (i = 0; i < slides.length; i++) {
+  for (i = 0; i < slides.length; i++) { // alle anderen SLides werden versteckt
       slides[i].style.display = "none";
       slides[i].className = "mySlides" + j + " fade";
   }
