@@ -128,19 +128,18 @@ function selectParent() {
         j=3;
         break;
     }
-    showFirstSlide();
     return j;
-
 }
 
-function showFirstSlide() {
-
-}
 
 showSlides(slideIndex); // zeigt erstes Bild an
 
+$('body').on('click','img',function(){
+    plusSlides(1);
+})
+
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
@@ -160,19 +159,20 @@ function showSlides(n) {
       slideIndex = 1;
   }
   if (n < 1) {slideIndex = slides.length;} // rückwärts klicken >> index springt auf das letzte Bild
-  if (counter > slides.length) {
+  if (counter > slides.length) { // when last image in slideshow is reached
        $('.slideshow-container').addClass('hide').removeClass('show');
        slides.className = "mySlides" + j + " fade";
        closeSlideshow = true;
        counter = 1;
   }
-  for (i = 0; i < slides.length; i++) { // alle anderen SLides werden versteckt
+  for (i = 0; i < slides.length; i++) { // alle Slides werden versteckt...
       slides[i].style.display = "none";
       slides[i].className = "mySlides" + j + " fade";
   }
   // SHOW CURRENT SLIDE
-  slides[slideIndex-1].style.display = "block"; // zeigt das aktuelle Bild an
+  slides[slideIndex-1].style.display = "block"; // ... um dann das aktuelle bild anzuzeigen
   slides[slideIndex-1].className += " width" + randomImageWidth; // fügt eine von 3 Breiten hinzu
+
 }
 
 

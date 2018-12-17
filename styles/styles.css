@@ -95,9 +95,9 @@ table {
   -ms-animation: spin30 8000ms infinite linear; }
 
 #rotationCircle3 {
-  -webkit-animation: spin80 800ms infinite linear;
-  -moz-animation: spin80 800ms infinite linear;
-  -ms-animation: spin80 800ms infinite linear; }
+  -webkit-animation: spin80 10000ms infinite linear;
+  -moz-animation: spin80 10000ms infinite linear;
+  -ms-animation: spin80 10000ms infinite linear; }
 
 @-moz-keyframes spin0 {
   from {
@@ -175,7 +175,7 @@ nav > * {
 p, span {
   font-family: fonttt, sans-serif;
   color: white;
-  font-size: 200px;
+  font-size: 25px;
   text-shadow: 0px 2px 3px black;
   letter-spacing: -0.2px;
   opacity: 0.5; }
@@ -187,7 +187,8 @@ a {
 .textKeywords a {
   mix-blend-mode: difference;
   color: white;
-  text-align: center; }
+  text-align: center;
+  font-size: 25px; }
 
 .textKeywords p {
   text-align: center;
@@ -227,6 +228,10 @@ a {
   clip-path: inset(0px 0px 0px 0px); }
 
 /* Hide the images by default */
+.imggg img {
+  pointer-events: all;
+  cursor: pointer; }
+
 .width1 {
   width: 50%;
   margin: auto; }
@@ -395,6 +400,7 @@ a {
   text-align: center;
   color: yellow;
   pointer-events: all;
+  cursor: pointer;
   opacity: 1; }
 
 .projecttitle1MouseOver {
