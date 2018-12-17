@@ -112,6 +112,7 @@ function selectParent() {
         j=1;
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides1' )).css('display', 'none');
         $('.mySlides1:first').css('display', 'block');
+        $('.mySlides1:first').addClass('width2');
         break;
       case "clipProjecttitle2":
         $('.slideshow-container').addClass('show').removeClass('hide');
@@ -119,13 +120,20 @@ function selectParent() {
         j=2;
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides2' )).css('display', 'none');
         $('.mySlides2:first').css('display', 'block');
+        $('.mySlides2:first').addClass('width2');
         break;
       case "clipProjecttitle3":
         console.log("Bananas are $0.48 a pound.");
         j=3;
         break;
     }
+    showFirstSlide();
     return j;
+
+}
+
+function showFirstSlide() {
+
 }
 
 showSlides(slideIndex); // zeigt erstes Bild an
@@ -140,21 +148,29 @@ function currentSlide(n) {
 
 function showSlides(n) {
     counter++;
+    var width1 = 1;
+    var width2 = 2;
+    var width3 = 3;
+    var randomImageWidth = Math.random() < 0.5 ? width1 : (Math.random() < 0.5 ? width2 : width3);
   var i;
   var slides = document.getElementsByClassName("mySlides" + j);
-  if (n > slides.length) {slideIndex = 1;}
+
+  if (n > slides.length) {
+      slideIndex = 1;
+  }
   if (n < 1) {slideIndex = slides.length;}
   if (counter > slides.length) {
        $('.slideshow-container').addClass('hide').removeClass('show');
-       // slides.style.display = 'yellow';
+       slides.className = "mySlides" + j + " fade";
        closeSlideshow = true;
        counter = 1;
   }
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
+      slides[i].className = "mySlides" + j + " fade";
   }
   slides[slideIndex-1].style.display = "block";
-
+  slides[slideIndex-1].className += " width" + randomImageWidth;
 }
 
 
@@ -162,6 +178,9 @@ function showSlides(n) {
 $(document).click(function() {
     if (closeSlideshow==true) {
         $('.slideshow-container').addClass('hide').removeClass('show');
+        $("div[class*='width']").removeClass (function (index, css) {
+           return (css.match (/(^|\s)width\S+/g) || []).join(' ');
+        });
         closeSlideshow = false;
     }
 });

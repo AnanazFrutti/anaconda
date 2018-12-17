@@ -217,6 +217,19 @@ a {
   /* analog zu .imageThumbnailScrollarea */
   clip-path: inset(0px 0px 0px 0px); }
 
+/* Hide the images by default */
+.width1 {
+  width: 50%;
+  margin: auto; }
+
+.width2 {
+  width: 70%;
+  margin: auto; }
+
+.width3 {
+  width: 100%;
+  margin: auto; }
+
 /* Slideshow container */
 .slideshow-container {
   max-width: 100%;
@@ -225,19 +238,17 @@ a {
   transform: translate(0, -50%);
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 0;
   display: none;
   z-index: 9999999; }
 
 .hide {
-  display: none; }
+  visibility: hidden;
+  opacity: 0; }
 
 .show {
-  display: block; }
-
-/* Hide the images by default */
-.mySlides1, .mySlides2 {
-  display: none; }
+  visibility: visible;
+  opacity: 1; }
 
 /* Next & previous buttons */
 .prev, .next {
