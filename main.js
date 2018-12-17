@@ -97,11 +97,52 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     //
 });
 
+// ENABLE/DISABLE SCROLL
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
+}
+
+// END ENABLE/DISABLE SCROLL
+
 $(".projecttitleContainer").click(function(event, j) {
     // show gallery based on class name of parent of clicked element
     currentParent = $(document).find(this).parent().parent().attr('class');
     selectParent(currentParent);
     $('.imageCount').css('opacity', '1').html('1');
+    disableScroll();
     event.stopPropagation();
 });
 
@@ -166,6 +207,7 @@ function showSlides(n) {
   if (counter > slides.length) { // when last image in slideshow is reached
        $('.slideshow-container').addClass('hide').removeClass('show');
        $('.imageCount').css('opacity', '0');
+       enableScroll();
        slides.className = "mySlides" + j + " fade";
        closeSlideshow = true;
        counter = 1;
