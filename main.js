@@ -170,8 +170,9 @@ function showSlides(n) {
       slides[i].style.display = "none";
       slides[i].className = "mySlides" + j + " fade";
   }
-  slides[slideIndex-1].style.display = "block";
-  slides[slideIndex-1].className += " width" + randomImageWidth;
+  // SHOW CURRENT SLIDE
+  slides[slideIndex-1].style.display = "block"; // zeigt das aktuelle Bild an
+  slides[slideIndex-1].className += " width" + randomImageWidth; // fügt eine von 3 Breiten hinzu
 }
 
 
