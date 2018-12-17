@@ -111,7 +111,7 @@ function selectParent() {
         console.log(currentParent);
         j=1;
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides1' )).css('display', 'none');
-        $('.yes').css('display', 'block'); // show text
+        // $('.yes').css('display', 'block'); // show text
         $('.mySlides1:first').css('display', 'block');
         $('.mySlides1:first').addClass('width2');
         break;
