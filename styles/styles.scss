@@ -105,8 +105,8 @@ nav > * {
 
 p,  span {
   font-family:fonttt, sans-serif;
-  color: white;
-  font-size:25px;
+  color: yellow;
+  font-size:30px;
   text-shadow: $textShadow;
   letter-spacing: -0.2px;
   opacity:0.5;
@@ -121,7 +121,7 @@ a {
   mix-blend-mode: difference;
   color: white;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .textKeywords p {
@@ -178,16 +178,20 @@ a {
 
 .imggg img {
   // width: 100%;
-  pointer-events: all;
+  // pointer-events: all;
   cursor: pointer; //funktioniert nicht
 }
+
+.imageCount {
+  opacity: 0;
+}
 .width1 {
-  width: 50%;
+  width: 100%;
   margin: auto;
 }
 
 .width2 {
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 

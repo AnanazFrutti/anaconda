@@ -101,6 +101,7 @@ $(".projecttitleContainer").click(function(event, j) {
     // show gallery based on class name of parent of clicked element
     currentParent = $(document).find(this).parent().parent().attr('class');
     selectParent(currentParent);
+    $('.imageCount').css('opacity', '1').html('1');
     event.stopPropagation();
 });
 
@@ -158,9 +159,13 @@ function showSlides(n) {
   if (n > slides.length) {
       slideIndex = 1;
   }
-  if (n < 1) {slideIndex = slides.length;} // rückwärts klicken >> index springt auf das letzte Bild
+  if (n < 1) {
+      slideIndex = slides.length;
+
+  } // rückwärts klicken >> index springt auf das letzte Bild
   if (counter > slides.length) { // when last image in slideshow is reached
        $('.slideshow-container').addClass('hide').removeClass('show');
+       $('.imageCount').css('opacity', '0');
        slides.className = "mySlides" + j + " fade";
        closeSlideshow = true;
        counter = 1;
@@ -169,9 +174,13 @@ function showSlides(n) {
       slides[i].style.display = "none";
       slides[i].className = "mySlides" + j + " fade";
   }
+  if (1 < n && n <= slides.length) { // imageCounter
+      $('.imageCount').css('opacity', '1').html(slideIndex);
+  }
   // SHOW CURRENT SLIDE
   slides[slideIndex-1].style.display = "block"; // ... um dann das aktuelle bild anzuzeigen
   slides[slideIndex-1].className += " width" + randomImageWidth; // fügt eine von 3 Breiten hinzu
+
 
 }
 
