@@ -429,9 +429,9 @@ function drawFirstCircles() { // 2
 
  $(document).ready(function(){
      createProjectlist();
-     // createInitialCircles();
-     // drawFirstCircles();
-     // updateCirclePos();
+     createInitialCircles();
+     drawFirstCircles();
+     updateCirclePos();
  });
 
 
