@@ -76,25 +76,25 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
         }
     });
 
-    // $( ".projecttitleContainer" ).mouseenter(function() {
-    //   $( this ).stop().animate({
-    //     opacity: 0,
-    //   }, 400, function() {
-    //       $( '.containerProjecttitle').stop().css('display', 'block').animate({
-    //         opacity: 1,
-    //       }, 400);
-    //   });
-    // });
-    // $( ".projecttitleContainer" ).mouseleave(function() {
-    //   $( this ).stop().animate({
-    //     opacity: 1,
-    //   }, 400, function() {
-    //       $( '.containerProjecttitle').stop().css('display', 'block').animate({
-    //         opacity: 0,
-    //       }, 400);
-    //   });
-    // });
-    //
+    $( ".projecttitleContainer" ).mouseenter(function() {
+      $( this ).stop().animate({
+        opacity: .5,
+      }, 400, function() {
+          $( '.containerProjecttitle').stop().css('display', 'block').animate({
+            opacity: 1,
+          }, 400);
+      });
+    });
+    $( ".projecttitleContainer" ).mouseleave(function() {
+      $( this ).stop().animate({
+        opacity: 1,
+      }, 400, function() {
+          $( '.containerProjecttitle').stop().css('display', 'block').animate({
+            opacity: 0,
+          }, 400);
+      });
+    });
+
 });
 
 // ENABLE/DISABLE SCROLL

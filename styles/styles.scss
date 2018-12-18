@@ -432,10 +432,11 @@ a {
 
 .projecttitle1MouseOver {
   text-align: center;
-  color:white;
+  color:yellow;
   max-width: 70%;
   margin:auto;
-  opacity: 0.3;
+  opacity: 1;
+  font-size: 25px;
 }
 
 .containerProjecttitle {
@@ -550,6 +551,10 @@ a {
 
 .textThumbnail {
   z-index: -3;
+}
+
+.projecttext {
+  pointer-events: none;
 }
 
 #project-name-pos1 {
