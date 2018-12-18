@@ -78,6 +78,7 @@ table {
 
 $shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 $textShadow: 0px 2px 3px rgba(0, 0, 0, 1);
+$textShadowHover: 0px 5px 8px rgba(255, 255, 0, 1);
 
 html {
   --keywordcircle-top: 0;
@@ -106,7 +107,7 @@ nav > * {
 p,  span {
   font-family:fonttt, sans-serif;
   color: yellow;
-  font-size:30px;
+  font-size:150px;
   text-shadow: $textShadow;
   letter-spacing: -0.2px;
   opacity:0.5;
@@ -121,7 +122,7 @@ a {
   mix-blend-mode: difference;
   color: white;
   text-align: center;
-  font-size: 30px;
+  font-size: 150px;
 }
 
 .textKeywords p {
@@ -393,6 +394,40 @@ a {
   pointer-events: all;
   cursor: pointer;
   opacity: 1;
+
+  -webkit-animation-name: hoverShadowReverse;
+  -webkit-animation-duration: 1.5s;
+  animation-name: hoverShadowReverse;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes hoverShadowReverse {
+  from {text-shadow: $textShadowHover;}
+  to {text-shadow: $textShadow;}
+}
+
+@keyframes hoverShadowReverse {
+  from {text-shadow: $textShadowHover;}
+  to {text-shadow: $textShadow;}
+}
+
+
+
+.projecttitle:hover, .projecttitle1:hover {
+  -webkit-animation-name: hoverShadow;
+  -webkit-animation-duration: 1.5s;
+  animation-name: hoverShadow;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes hoverShadow {
+  from {text-shadow: $textShadow;}
+  to {text-shadow: $textShadowHover;}
+}
+
+@keyframes hoverShadow {
+  from {text-shadow: $textShadow;}
+  to {text-shadow: $textShadowHover;}
 }
 
 .projecttitle1MouseOver {

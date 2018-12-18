@@ -175,7 +175,7 @@ nav > * {
 p, span {
   font-family: fonttt, sans-serif;
   color: yellow;
-  font-size: 30px;
+  font-size: 150px;
   text-shadow: 0px 2px 3px black;
   letter-spacing: -0.2px;
   opacity: 0.5; }
@@ -188,7 +188,7 @@ a {
   mix-blend-mode: difference;
   color: white;
   text-align: center;
-  font-size: 30px; }
+  font-size: 150px; }
 
 .textKeywords p {
   text-align: center;
@@ -403,8 +403,38 @@ a {
   color: yellow;
   pointer-events: all;
   cursor: pointer;
-  opacity: 1; }
+  opacity: 1;
+  -webkit-animation-name: hoverShadowReverse;
+  -webkit-animation-duration: 1.5s;
+  animation-name: hoverShadowReverse;
+  animation-duration: 1.5s; }
 
+@-webkit-keyframes hoverShadowReverse {
+  from {
+    text-shadow: 0px 5px 8px yellow; }
+  to {
+    text-shadow: 0px 2px 3px black; } }
+@keyframes hoverShadowReverse {
+  from {
+    text-shadow: 0px 5px 8px yellow; }
+  to {
+    text-shadow: 0px 2px 3px black; } }
+.projecttitle:hover, .projecttitle1:hover {
+  -webkit-animation-name: hoverShadow;
+  -webkit-animation-duration: 1.5s;
+  animation-name: hoverShadow;
+  animation-duration: 1.5s; }
+
+@-webkit-keyframes hoverShadow {
+  from {
+    text-shadow: 0px 2px 3px black; }
+  to {
+    text-shadow: 0px 5px 8px yellow; } }
+@keyframes hoverShadow {
+  from {
+    text-shadow: 0px 2px 3px black; }
+  to {
+    text-shadow: 0px 5px 8px yellow; } }
 .projecttitle1MouseOver {
   text-align: center;
   color: white;

@@ -138,12 +138,12 @@ function enableScroll() {
 // END ENABLE/DISABLE SCROLL
 
 $(".projecttitleContainer").click(function(event, j) {
+    event.stopPropagation();
     // show gallery based on class name of parent of clicked element
     currentParent = $(document).find(this).parent().parent().attr('class');
     selectParent(currentParent);
     $('.imageCount').css('opacity', '1').html('1');
     disableScroll();
-    event.stopPropagation();
 });
 
 function selectParent() {
@@ -173,11 +173,11 @@ function selectParent() {
     return j;
 }
 
-
 showSlides(slideIndex); // zeigt erstes Bild an
 
 $('body').on('click','img',function(){
     plusSlides(1);
+    event.stopPropagation();
 })
 
 function plusSlides(n) {
@@ -186,6 +186,7 @@ function plusSlides(n) {
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
+
 }
 
 function showSlides(n) {
@@ -222,20 +223,24 @@ function showSlides(n) {
   // SHOW CURRENT SLIDE
   slides[slideIndex-1].style.display = "block"; // ... um dann das aktuelle bild anzuzeigen
   slides[slideIndex-1].className += " width" + randomImageWidth; // fügt eine von 3 Breiten hinzu
-
-
 }
 
-
-
-$(document).click(function() {
-    if (closeSlideshow==true) {
+$(document).click(function() { // close Slideshow
+    if (closeSlideshow==true) { // closes slideshow after last slide
         $('.slideshow-container').addClass('hide').removeClass('show');
         $("div[class*='width']").removeClass (function (index, css) {
            return (css.match (/(^|\s)width\S+/g) || []).join(' ');
         });
         closeSlideshow = false;
     }
+    $('.slideshow-container').addClass('hide').removeClass('show');
+    $('.slideshow-container>div').css('display', 'none');
+    $('.imageCount').css('opacity', '0').
+    n = 1;
+    slideIndex=1;
+    closeSlideshow = false;
+    counter = 1;
+    enableScroll();
 });
 
 
@@ -424,9 +429,9 @@ function drawFirstCircles() { // 2
 
  $(document).ready(function(){
      createProjectlist();
-     createInitialCircles();
-     drawFirstCircles();
-     updateCirclePos();
+     // createInitialCircles();
+     // drawFirstCircles();
+     // updateCirclePos();
  });
 
 
