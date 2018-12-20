@@ -43,6 +43,10 @@ var j = 1;
 var currentParent;
 var currentParentHover;
 
+var exampleDestination = document.querySelector('.projecttitle1');
+
+
+
 // calculate scrollposition
 
 $(function() { /* jQuery short for $(document).ready(function() { ... }); */
@@ -63,6 +67,8 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     //     $(".projecttext").hide();
     //   }
     // );
+
+
 
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
@@ -166,7 +172,18 @@ $(".projecttitleContainer").click(function(event, j) {
     selectParent(currentParent);
     $('.imageCount').css('opacity', '1').html('1');
     disableScroll();
+
+    var $window = $(window),
+        $element = $('.imageThumbnail:eq(0)'),
+        elementTop = $element.offset().top,
+        elementHeight = $element.height(),
+        viewportHeight = $window.height(),
+        scrollIt = elementTop - ((viewportHeight - elementHeight) / 2);
+    smoothScroll(scrollIt, 800);
+
 });
+
+
 
 function selectParent() {
     switch (currentParent) {
@@ -175,7 +192,6 @@ function selectParent() {
         console.log(currentParent);
         j=1;
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides1' )).css('display', 'none');
-        // $('.yes').css('display', 'block'); // show text
         $('.mySlides1:first').css('display', 'block');
         $('.mySlides1:first').addClass('width2');
         break;

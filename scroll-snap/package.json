@@ -1,0 +1,80 @@
+{
+  "_from": "scroll-snap",
+  "_id": "scroll-snap@1.0.6",
+  "_inBundle": false,
+  "_integrity": "sha512-9QPdQFwZ31A7wQBDJxXblvK0+pdYyNh7tn4wVOsS5bbqhj/ZBFFlgHokAxbogiXcTdUIdq2UBovXf/3gylcKYw==",
+  "_location": "/scroll-snap",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "scroll-snap",
+    "name": "scroll-snap",
+    "escapedName": "scroll-snap",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/scroll-snap/-/scroll-snap-1.0.6.tgz",
+  "_shasum": "369e8ef1c15f00c6299aa8a8a1f7f794fa5fda22",
+  "_spec": "scroll-snap",
+  "_where": "C:\\Users\\Anna",
+  "author": {
+    "name": "Luca Falasco",
+    "email": "falasco.luca@gmail.com",
+    "url": "http://lucafalasco.com"
+  },
+  "bugs": {
+    "url": "https://github.com/lucafalasco/scroll-snap/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Snap page when user stops scrolling, with a customizable configuration and a consistent cross browser behaviour",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.3.2",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "del-cli": "^0.2.1",
+    "eslint": "^3.16.1",
+    "eslint-config-standard": "^7.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "mkdirp": "^0.5.1",
+    "path": "^0.12.7",
+    "strip-loader": "^0.1.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "homepage": "https://github.com/lucafalasco/scroll-snap",
+  "keywords": [
+    "scroll",
+    "scrolling",
+    "snap",
+    "scrollsnap",
+    "pagesnap",
+    "custom"
+  ],
+  "license": "MIT",
+  "main": "dist/scroll-snap.js",
+  "name": "scroll-snap",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucafalasco/scroll-snap.git"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack -p --progress",
+    "build:demo": "webpack -p --progress",
+    "lint": "eslint ./src/index.js",
+    "prebuild": "mkdirp dist && del ./dist/*",
+    "push:demo": "git push origin `git subtree split --prefix dist master`:gh-pages --force",
+    "start": "NODE_ENV=development webpack-dev-server --inline --progress"
+  },
+  "version": "1.0.6"
+}
