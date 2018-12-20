@@ -41,6 +41,7 @@ var counter = 0;
 var j = 1;
 
 var currentParent;
+var currentParentHover;
 
 // calculate scrollposition
 
@@ -76,15 +77,36 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
         }
     });
 
+// SHOW projectcaption
+
     $( ".projecttitleContainer" ).mouseenter(function() {
-      $( this ).stop().animate({
-        opacity: .5,
-      }, 400, function() {
-          $( '.containerProjecttitle').stop().css('display', 'block').animate({
-            opacity: 1,
-          }, 400);
-      });
+        currentParentHover = $(this).children().attr('class');
+        console.log("check" + currentParentHover);
+
+        switch (currentParentHover) {
+          case "projecttitle1":
+              $( this ).stop().animate({
+                opacity: .5,
+              }, 400, function() {
+                  $( '.containerProjecttitle:eq(0)').stop().css('display', 'block').animate({
+                    opacity: 1,
+                  }, 400);
+              });
+              break;
+          case "projecttitle2":
+              $( this ).stop().animate({
+                opacity: .5,
+              }, 400, function() {
+                  $( '.containerProjecttitle:eq(1)').stop().css('display', 'block').animate({
+                    opacity: 1,
+                  }, 400);
+              });
+              break;
+            break;
+        }
+
     });
+
     $( ".projecttitleContainer" ).mouseleave(function() {
       $( this ).stop().animate({
         opacity: 1,
@@ -177,6 +199,14 @@ showSlides(slideIndex); // zeigt erstes Bild an
 
 $('body').on('click','img',function(){
     plusSlides(1);
+    // var filterVal = 'blur(5px)';
+    // $('.projecttitle1')
+    //   .css('filter',filterVal)
+    //   .css('webkitFilter',filterVal)
+    //   .css('mozFilter',filterVal)
+    //   .css('oFilter',filterVal)
+    //   .css('msFilter',filterVal);
+
     event.stopPropagation();
 })
 
@@ -222,8 +252,15 @@ function showSlides(n) {
   }
   // SHOW CURRENT SLIDE
   slides[slideIndex-1].style.display = "block"; // ... um dann das aktuelle bild anzuzeigen
-  slides[slideIndex-1].className += " width" + randomImageWidth; // fügt eine von 3 Breiten hinzu
+  if (!(n==slides.length)) { // so that width isn't applied to last text slide
+  console.log("n" + n);
+      // $('.slideshow-container>div').removeClass("div[class*='width']");
+      slides[slideIndex-1].className += " width" + randomImageWidth; // fügt eine von 3 Breiten hinzu
+  }
+
 }
+
+// random width von projecttitle entfernt
 
 $(document).click(function() { // close Slideshow
     if (closeSlideshow==true) { // closes slideshow after last slide
@@ -429,9 +466,9 @@ function drawFirstCircles() { // 2
 
  $(document).ready(function(){
      createProjectlist();
-     createInitialCircles();
-     drawFirstCircles();
-     updateCirclePos();
+     // createInitialCircles();
+     // drawFirstCircles();
+     // updateCirclePos();
  });
 
 

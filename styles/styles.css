@@ -398,7 +398,7 @@ a {
   max-width: 70%;
   display: block; }
 
-.projecttitle, .projecttitle1 {
+.projecttitle, .projecttitle1, .projecttitle2 {
   text-align: center;
   color: yellow;
   pointer-events: all;
@@ -411,51 +411,57 @@ a {
 
 @-webkit-keyframes hoverShadowReverse {
   from {
-    text-shadow: 0px 5px 8px yellow; }
+    text-shadow: 0px 2px 8px yellow; }
   to {
     text-shadow: 0px 2px 3px black; } }
 @keyframes hoverShadowReverse {
   from {
-    text-shadow: 0px 5px 8px yellow; }
+    text-shadow: 0px 2px 8px yellow; }
   to {
     text-shadow: 0px 2px 3px black; } }
 .projecttitle:hover, .projecttitle1:hover {
   -webkit-animation-name: hoverShadow;
   -webkit-animation-duration: 1.5s;
+  -webkit-animation-fill-mode: forwards;
   animation-name: hoverShadow;
-  animation-duration: 1.5s; }
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards; }
 
 @-webkit-keyframes hoverShadow {
   from {
     text-shadow: 0px 2px 3px black; }
   to {
-    text-shadow: 0px 5px 8px yellow; } }
+    text-shadow: 0px 2px 8px yellow; } }
 @keyframes hoverShadow {
   from {
     text-shadow: 0px 2px 3px black; }
   to {
-    text-shadow: 0px 5px 8px yellow; } }
-.projecttitle1MouseOver {
+    text-shadow: 0px 2px 8px yellow; } }
+.projecttitle1MouseOver, .projecttitle2MouseOver {
+  position: relative;
   text-align: left;
   color: yellow;
   max-width: 100%;
-  margin: auto;
   opacity: 1;
   font-size: 25px;
-  margin: 0; }
+  top: 0;
+  left: 0; }
 
 .containerProjecttitle {
   position: fixed;
   display: none;
   margin: 0;
-  top: 10px;
+  padding-bottom: 10px;
+  top: 3px;
   left: 10px;
   width: 30%;
   z-index: 9999;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  cursor: pointer; }
+  cursor: pointer;
+  column-count: 3;
+  column-gap: 30px; }
 
 .due {
   position: relative;
