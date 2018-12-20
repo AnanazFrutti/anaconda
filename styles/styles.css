@@ -386,6 +386,35 @@ a {
   justify-content: center;
   overflow: auto; }
 
+.aboutClipPath1 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  pointer-events: none; }
+
+.clipPath1top {
+  height: 500px;
+  width: 100%;
+  margin: auto;
+  z-index: 99999999;
+  clip-path: inset(0px 0px 0px 0px);
+  opacity: 1; }
+
+.clipPath1 {
+  height: var(--height-clip);
+  width: 100%;
+  margin: auto;
+  z-index: 99999999;
+  opacity: .5; }
+
+.clipPath1bottom {
+  height: 700px;
+  width: 100%;
+  margin: auto;
+  z-index: 99999999;
+  clip-path: inset(0px 0px 0px 0px);
+  opacity: 1; }
+
 .projecttitleContainer {
   position: fixed;
   margin: 0;
@@ -464,13 +493,18 @@ a {
   position: fixed;
   margin: 0;
   padding-bottom: 10px;
-  top: -4px;
+  top: 50%;
+  /* bestimmt die vertikale Positionierung von Projecttitle */
+  transform: translate(0, -50%);
+  /* bestimmt die vertikale Positionierung von Projecttitle */
   width: 100%;
   z-index: 9999;
   overflow: hidden;
   opacity: 1;
   pointer-events: none;
-  cursor: pointer;
+  cursor: pointer; }
+
+.aboutmenu p {
   text-align: center; }
 
 .navbar {
@@ -490,10 +524,12 @@ a {
 
 .about {
   font-size: 25px;
-  color: blue; }
+  color: blue;
+  pointer-events: all; }
 
 .abouttext {
-  font-size: 25px; }
+  font-size: 25px;
+  color: grey; }
 
 .due {
   position: relative;

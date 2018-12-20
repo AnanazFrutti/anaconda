@@ -88,7 +88,7 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     $( ".projecttitleContainer" ).mouseenter(function() {
         currentParentHover = $(this).children().attr('class');
         console.log("check" + currentParentHover);
-        $('.aboutmenu').stop().animate({ opacity: 0}, 400);
+        // $('.aboutmenu').stop().animate({ opacity: 0}, 400);
 
         switch (currentParentHover) {
           case "projecttitle1":
@@ -115,7 +115,7 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     });
 
     $( ".projecttitleContainer" ).mouseleave(function() {
-        $('.aboutmenu').stop().animate({ opacity: 1}, 400);
+        // $('.aboutmenu').stop().animate({ opacity: 1}, 400);
 
         $( this ).stop().animate({
         opacity: 1,
@@ -125,6 +125,20 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
               }, 400);
           });
         });
+
+
+        $( ".aboutmenu>p" ).mouseenter(function() {
+            $( '.navbar').stop().animate({
+                opacity: 1,}, 400);
+              });
+
+
+
+        $( ".aboutmenu>p" ).mouseleave(function() {
+            $( '.navbar').stop().animate({
+                opacity: 0,}, 400);
+              });
+        
 
 });
 
@@ -509,6 +523,7 @@ function drawFirstCircles() { // 2
          var imageHeight = $(".imageThumbnail:eq(0)").innerHeight();
          $(".clipProjecttitle1").css('--height-clip', imageHeight);
          $(".uno").css('--height-clip', imageHeight);
+         $(".clipPath1").css('--height-clip', imageHeight);
          console.log("innerHeight = " + imageHeight);
 
          var imageHeight2 = $(".imageThumbnail:eq(1)").innerHeight();

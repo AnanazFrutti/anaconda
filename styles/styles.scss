@@ -390,7 +390,43 @@ a {
   overflow: auto;
 }
 
-.projecttitleContainer{
+.aboutClipPath1 {
+  position: absolute;
+  top:0;
+  width:100%;
+  pointer-events: none;
+}
+
+.clipPath1top {
+  // background-color: red;
+  height: 500px; //analog zu padding-top div uno
+  width: 100%;
+  margin:auto;
+  z-index: 99999999;
+  clip-path: inset(0px 0px 0px 0px);
+  opacity: 1;
+}
+
+.clipPath1 {
+  // background-color: blue;
+  height: var(--height-clip);
+  width: 100%;
+  margin: auto;
+  z-index: 99999999;
+  opacity:.5;
+}
+
+.clipPath1bottom {
+  // background-color: red;
+  height: 700px; //analog zu padding-bottom div uno + padding-top div due
+  width: 100%;
+  margin:auto;
+  z-index: 99999999;
+  clip-path: inset(0px 0px 0px 0px);
+  opacity: 1;
+}
+
+.projecttitleContainer {
   position: fixed;
   margin:0;
   top:50%; /* bestimmt die vertikale Positionierung von Projecttitle */
@@ -471,18 +507,37 @@ a {
   column-gap: 100px;
 }
 
+// .containerProjecttitle {
+//   position: fixed;
+//   display: none;
+//   margin:0;
+//   // top:50%;
+//   // transform: translate(0, -50%);
+//   width: 100%;
+//   z-index: 9999;
+//   overflow: hidden;
+//   opacity: 0;
+//   pointer-events: none;
+//   cursor: pointer;
+// }
+
 .aboutmenu {
   position: fixed;
   margin:0;
   padding-bottom: 10px;
-  top:-4px;
+  top:50%; /* bestimmt die vertikale Positionierung von Projecttitle */
+  transform: translate(0, -50%); /* bestimmt die vertikale Positionierung von Projecttitle */
   width: 100%;
   z-index: 9999;
   overflow: hidden;
   opacity: 1;
   pointer-events: none;
   cursor: pointer;
-  text-align: center;
+
+}
+
+.aboutmenu p{
+    text-align: center;
 }
 
 .navbar {
@@ -504,26 +559,15 @@ a {
 .about {
   font-size: $fontSizeBody;
   color: blue;
-
+  pointer-events: all;
 }
 
 .abouttext {
   font-size: $fontSizeBody;
+  color: grey;
 }
 
-// .containerProjecttitle {
-//   position: fixed;
-//   display: none;
-//   margin:0;
-//   top:50%;
-//   transform: translate(0, -50%);
-//   width: 100%;
-//   z-index: 9999;
-//   overflow: hidden;
-//   opacity: 0;
-//   pointer-events: none;
-//   cursor: pointer;
-// }
+
 
 // ------------ BILD 2 -------------
 .due {
