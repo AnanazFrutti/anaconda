@@ -4,7 +4,7 @@ var diameterCircle = 200;
 
 // ------------------------------------------------------------------------------------------------------------
 
-var keywords=['reality0','idealism1','capitalism2','body3','xeno4'];
+var keywords=['info']; //,'idealism1','capitalism2','body3','xeno4'
 var keywordsURL=['www.anaconda.cc/reality', 'www.anaconda.cc/idealism', 'www.anaconda.cc/capitalism', 'www.anaconda.cc/body', 'www.anaconda.cc/xeno']
 var projectlist = ['The Great Encounter, The Ending', 'The Young Planet', '04PP', 'Shush Tones', 'Berlin Netzkunst', 'Next Project', 'TongueTongue', 'The Great Encounter, The Ending', 'The Young Planet', '04PP', 'Shush Tones', 'Berlin Netzkunst', 'Next Project', 'TongueTongue']
 
@@ -88,6 +88,7 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     $( ".projecttitleContainer" ).mouseenter(function() {
         currentParentHover = $(this).children().attr('class');
         console.log("check" + currentParentHover);
+        $('.aboutmenu').stop().animate({ opacity: 0}, 400);
 
         switch (currentParentHover) {
           case "projecttitle1":
@@ -114,14 +115,16 @@ $(function() { /* jQuery short for $(document).ready(function() { ... }); */
     });
 
     $( ".projecttitleContainer" ).mouseleave(function() {
-      $( this ).stop().animate({
+        $('.aboutmenu').stop().animate({ opacity: 1}, 400);
+
+        $( this ).stop().animate({
         opacity: 1,
-      }, 400, function() {
-          $( '.containerProjecttitle').stop().css('display', 'block').animate({
-            opacity: 0,
-          }, 400);
-      });
-    });
+          }, 400, function() {
+              $( '.containerProjecttitle').stop().css('display', 'block').animate({
+                opacity: 0,
+              }, 400);
+          });
+        });
 
 });
 
@@ -172,6 +175,7 @@ $(".projecttitleContainer").click(function(event, j) {
     selectParent(currentParent);
     $('.imageCount').css('opacity', '1').html('1');
     disableScroll();
+    $( ".circle0" ).animate({ "top": "-=350px" }, 1000 ); // pusht circle rapide raus
 });
 
 
@@ -395,7 +399,7 @@ function generateCirclePosition() { // 1.1
 }
 
 function createInitialCircles() { // 1.2
-    for(var i=0;i<5;i++){ //generates 5 initial circles
+    for(var i=0;i<keywords.length;i++){ //generates 5 initial circles
         generateCirclePosition();
         circle = new KeywordCircle(initialX,initialY);
         circleObjectArr.push(circle); // Array mit allen KeywordCircle Instanzen
@@ -493,9 +497,9 @@ function drawFirstCircles() { // 2
 
  $(document).ready(function(){
      createProjectlist();
-     // createInitialCircles();
-     // drawFirstCircles();
-     // updateCirclePos();
+     createInitialCircles();
+     drawFirstCircles();
+     updateCirclePos();
  });
 
 
@@ -517,6 +521,8 @@ function drawFirstCircles() { // 2
          $(".tres").css('--height-clip3', imageHeight3);
          console.log("innerHeight3 = " + imageHeight3);
     });
+
+
 
 $(document).ready(calculateThumbnailHeight);
 $(window).resize(calculateThumbnailHeight);
