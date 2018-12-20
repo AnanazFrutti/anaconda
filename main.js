@@ -172,20 +172,14 @@ $(".projecttitleContainer").click(function(event, j) {
     selectParent(currentParent);
     $('.imageCount').css('opacity', '1').html('1');
     disableScroll();
-
-    var $window = $(window),
-        $element = $('.imageThumbnail:eq(0)'),
-        elementTop = $element.offset().top,
-        elementHeight = $element.height(),
-        viewportHeight = $window.height(),
-        scrollIt = elementTop - ((viewportHeight - elementHeight) / 2);
-    smoothScroll(scrollIt, 800);
-
 });
 
 
 
 function selectParent() {
+
+
+
     switch (currentParent) {
       case "clipProjecttitle1":
         $('.slideshow-container').addClass('show').removeClass('hide');
@@ -194,6 +188,14 @@ function selectParent() {
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides1' )).css('display', 'none');
         $('.mySlides1:first').css('display', 'block');
         $('.mySlides1:first').addClass('width2');
+        // smoothscroll center thumbnailimage
+        var $window = $(window),
+            $element = $('.imageThumbnail:eq(0)'),
+            elementTop = $element.offset().top,
+            elementHeight = $element.height(),
+            viewportHeight = $window.height(),
+            scrollIt = elementTop - ((viewportHeight - elementHeight) / 2);
+            smoothScroll(scrollIt, 800);
         break;
       case "clipProjecttitle2":
         $('.slideshow-container').addClass('show').removeClass('hide');
@@ -202,6 +204,14 @@ function selectParent() {
         $('.slideshow-container div').not(document.getElementsByClassName( 'mySlides2' )).css('display', 'none');
         $('.mySlides2:first').css('display', 'block');
         $('.mySlides2:first').addClass('width2');
+        // smoothscroll center thumbnailimage
+        var $window = $(window),
+            $element = $('.imageThumbnail:eq(1)'),
+            elementTop = $element.offset().top,
+            elementHeight = $element.height(),
+            viewportHeight = $window.height(),
+            scrollIt = elementTop - ((viewportHeight - elementHeight) / 2);
+            smoothScroll(scrollIt, 800);
         break;
       case "clipProjecttitle3":
         console.log("Bananas are $0.48 a pound.");
@@ -209,6 +219,8 @@ function selectParent() {
         break;
     }
     return j;
+
+
 }
 
 showSlides(slideIndex); // zeigt erstes Bild an
@@ -232,7 +244,6 @@ function plusSlides(n) {
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
-
 }
 
 function showSlides(n) {
@@ -491,17 +502,17 @@ function drawFirstCircles() { // 2
 
  var calculateThumbnailHeight = (function () {
          // dynamically calculate and change value of clipProjecttitle based on Height of imageThumbnail
-         var imageHeight = $(".containerThumbnail1").innerHeight();
+         var imageHeight = $(".imageThumbnail:eq(0)").innerHeight();
          $(".clipProjecttitle1").css('--height-clip', imageHeight);
          $(".uno").css('--height-clip', imageHeight);
          console.log("innerHeight = " + imageHeight);
 
-         var imageHeight2 = $(".containerThumbnail2").innerHeight();
+         var imageHeight2 = $(".imageThumbnail:eq(1)").innerHeight();
          $(".clipProjecttitle2").css('--height-clip2', imageHeight2);
          $(".due").css('--height-clip2', imageHeight2);
          console.log("innerHeight2 = " + imageHeight2);
 
-         var imageHeight3 = $(".containerThumbnail3").innerHeight();
+         var imageHeight3 = $(".imageThumbnail:eq(2)").innerHeight();
          $(".clipProjecttitle3").css('--height-clip3', imageHeight3);
          $(".tres").css('--height-clip3', imageHeight3);
          console.log("innerHeight3 = " + imageHeight3);
